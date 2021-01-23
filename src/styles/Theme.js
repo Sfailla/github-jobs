@@ -1,4 +1,13 @@
 export const Theme = {
+  mixin: {
+    flex: (justify = 'center', align = 'center', direction = 'row') => `
+      display: flex;
+      justify-content: ${justify};
+      align-items: ${align};
+      flex-direction: ${direction};
+    `,
+  },
+
   light: {
     background: {
       primary: '#FFFFFF',
