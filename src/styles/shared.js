@@ -5,3 +5,9 @@ export const LayoutWrapper = styled.div`
   max-width: 11.1rem;
   margin: 0 auto;
 `;
+
+// function LayoutWrapper({ children, ...otherProps }) {
+//   return <Layout {...otherProps}>{children}</Layout>;
+// }
+
+// export { LayoutWrapper };

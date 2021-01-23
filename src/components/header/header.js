@@ -1,22 +1,22 @@
 import React from 'react';
-import { Header, Container, Logo, Toggle } from './headerStyles';
+import { Head, Container, Logo, Toggle } from './headerStyles';
 
-import logo from '../../assets/desktop/logo.svg';
-import background from '../../assets/desktop/bg-pattern-header.svg';
-
-function header() {
+export default function Header({ src, children, ...otherProps }) {
   return (
-    <Header src={background}>
-      <Container>
-        <Logo src={logo} alt="logo-svg" />
-        <Toggle />
-      </Container>
-    </Header>
+    <Head src={src} {...otherProps}>
+      {children}
+    </Head>
   );
 }
 
-// function HeaderLogo({ ...otherProps }) {
-//   return <Logo {...otherProps} />;
-// }
+Header.Container = function HeaderContainer({ children, ...otherProps }) {
+  return <Container {...otherProps}>{children}</Container>;
+};
 
-export default header;
+Header.Logo = function HeaderLogo({ ...otherProps }) {
+  return <Logo {...otherProps} />;
+};
+
+Header.Toggle = function HeaderToggle({ children }) {
+  return <Toggle>{children}</Toggle>;
+};
