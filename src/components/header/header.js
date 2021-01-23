@@ -1,22 +1,16 @@
 import React from 'react';
-import { Head, Container, Logo, Toggle } from './headerStyles';
+import { Background, Container, Logo, Toggle } from './headerStyles';
 
-export default function Header({ src, children, ...otherProps }) {
-  return (
-    <Head src={src} {...otherProps}>
-      {children}
-    </Head>
-  );
+function Header({ src, children }) {
+  return <Background src={src}>{children}</Background>;
 }
 
 Header.Container = function HeaderContainer({ children, ...otherProps }) {
   return <Container {...otherProps}>{children}</Container>;
 };
 
-Header.Logo = function HeaderLogo({ ...otherProps }) {
-  return <Logo {...otherProps} />;
+Header.Logo = function HeaderLogo({ children, ...otherProps }) {
+  return <Logo {...otherProps}>{children}</Logo>;
 };
 
-Header.Toggle = function HeaderToggle({ children }) {
-  return <Toggle>{children}</Toggle>;
-};
+export default Header;

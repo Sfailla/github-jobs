@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
-export const LayoutWrapper = styled.div`
+const Layout = styled.div`
   width: 100%;
-  max-width: 11.1rem;
+  height: 100%;
+  max-width: 111rem;
   margin: 0 auto;
 `;
 
-// function LayoutWrapper({ children, ...otherProps }) {
-//   return <Layout {...otherProps}>{children}</Layout>;
-// }
-
-// export { LayoutWrapper };
+export const LayoutWrapper = ({ children }) => {
+  return <Layout>{children}</Layout>;
+};
