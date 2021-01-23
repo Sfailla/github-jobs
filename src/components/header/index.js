@@ -1,23 +1,21 @@
 import React from 'react';
-import Header from './header';
-import { LayoutWrapper } from '../../styles/shared';
 
+import { LayoutWrapper } from '../../styles/shared';
+import Header from './header';
 import logo from '../../assets/desktop/logo.svg';
 import background from '../../assets/desktop/bg-pattern-header.svg';
 
-function HeaderComponent() {
+function HeaderSection() {
   return (
     <Header src={background}>
       <LayoutWrapper>
         <Header.Container>
           <Header.Logo src={logo} alt="logo-svg" />
-          <Header.Toggle>
-            <h1>toggle</h1>
-          </Header.Toggle>
+          <h1 style={{ color: 'white' }}>toggle</h1>
         </Header.Container>
       </LayoutWrapper>
     </Header>
   );
 }
 
-export default HeaderComponent;
+export default HeaderSection;

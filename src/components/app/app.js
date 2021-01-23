@@ -1,10 +1,11 @@
-import HeaderComponent from '../header';
+import React from 'react';
+import Header from '../header';
 
 function App() {
   return (
-    <div>
-      <HeaderComponent />
-    </div>
+    <React.Fragment>
+      <Header />
+    </React.Fragment>
   );
 }
 
