@@ -14,8 +14,8 @@ function HeaderSection() {
           <Header.Logo src={logo} alt="logo-svg" />
           <h1 style={{ color: 'white' }}>toggle</h1>
         </Header.Container>
+        <Searchbar />
       </LayoutWrapper>
-      <Searchbar />
     </Header>
   );
 }
