@@ -18,7 +18,3 @@ export const Logo = styled.img`
   width: 11.5rem;
   height: 3.2rem;
 `;
-
-export const Toggle = styled.div`
-  color: white;
-`;

@@ -1,16 +1,23 @@
 import React from 'react';
-import { Background, Container, Logo, Toggle } from './headerStyles';
+import { Background, Container, Logo } from './headerStyles';
+import Searchbar from '../searchbar/search';
 
-function Header({ src, children }) {
-  return <Background src={src}>{children}</Background>;
+import { LayoutWrapper } from '../../styles/shared';
+import logo from '../../assets/desktop/logo.svg';
+import background from '../../assets/desktop/bg-pattern-header.svg';
+
+function Header() {
+  return (
+    <Background src={background}>
+      <LayoutWrapper>
+        <Container>
+          <Logo src={logo} alt="logo" />
+          <h1 style={{ color: 'white' }}>toggle</h1>
+        </Container>
+        <Searchbar />
+      </LayoutWrapper>
+    </Background>
+  );
 }
-
-Header.Container = function HeaderContainer({ children, ...otherProps }) {
-  return <Container {...otherProps}>{children}</Container>;
-};
-
-Header.Logo = function HeaderLogo({ children, ...otherProps }) {
-  return <Logo {...otherProps}>{children}</Logo>;
-};
 
 export default Header;

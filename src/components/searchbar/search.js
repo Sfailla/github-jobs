@@ -1,22 +1,22 @@
 import React from 'react';
-import { Container, InputGroup, InputWrapper, Label, Input } from './searchStyles';
+import { Container, InputGroup, Wrapper, Label, Input } from './searchStyles';
 
-export default function Searchbar({ children, ...otherProps }) {
-  return <Container {...otherProps}>{children}</Container>;
+export default function Searchbar() {
+  return (
+    <Container>
+      <Wrapper>
+        <InputGroup>
+          <Input />
+        </InputGroup>
+        <InputGroup>
+          <Input />
+        </InputGroup>
+        <InputGroup>
+          <Input />
+          <Label>Full Time Only</Label>
+          <span>button</span>
+        </InputGroup>
+      </Wrapper>
+    </Container>
+  );
 }
-
-Searchbar.InputGroup = function SearchbarInputGroup({ children, ...otherProps }) {
-  return <InputGroup {...otherProps}>{children}</InputGroup>;
-};
-Searchbar.InputWrapper = function SearchbarInputWrapper({
-  children,
-  ...otherProps
-}) {
-  return <InputWrapper {...otherProps}>{children}</InputWrapper>;
-};
-Searchbar.Label = function SearchbarLabel({ children, ...otherProps }) {
-  return <Label {...otherProps}>{children}</Label>;
-};
-Searchbar.Input = function SearchbarInput({ children, ...otherProps }) {
-  return <Input {...otherProps}>{children}</Input>;
-};

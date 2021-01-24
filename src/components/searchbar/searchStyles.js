@@ -12,7 +12,7 @@ export const Container = styled.div`
   transform: translate(-50%, 50%);
 `;
 
-export const InputWrapper = styled.form`
+export const Wrapper = styled.form`
   display: grid;
   grid-template-columns: minmax(22.2rem, 46.3rem) minmax(21.3rem, 30rem) minmax(
       25.2rem,
