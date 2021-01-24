@@ -14,6 +14,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    width: 100vw;
+    height: 100vh;
     margin: 0;
     font-size: 1.6rem;
     line-height: 2.6rem;
