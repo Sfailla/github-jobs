@@ -5,6 +5,7 @@ const Layout = styled.div`
   height: 100%;
   max-width: 111rem;
   margin: 0 auto;
+  position: relative;
 `;
 
 export const LayoutWrapper = ({ children }) => {
