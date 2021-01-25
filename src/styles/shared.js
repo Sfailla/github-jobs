@@ -5,9 +5,10 @@ const Layout = styled.div`
   height: 100%;
   max-width: 111rem;
   margin: 0 auto;
-  position: relative;
+
+  ${({ relative }) => relative && `position: relative`};
 `;
 
-export const LayoutWrapper = ({ children }) => {
-  return <Layout>{children}</Layout>;
+export const LayoutWrapper = ({ relative = false, children }) => {
+  return <Layout relative={relative}>{children}</Layout>;
 };
