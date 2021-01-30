@@ -22,7 +22,12 @@ export const GlobalStyles = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, Kumbh Sans, Segoe UI, Roboto,
       Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #f4f6f8; 
+    -moz-osx-font-smoothing: grayscale; 
+    transition: background .5s linear;
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
   }
 `;

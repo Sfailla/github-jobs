@@ -10,14 +10,30 @@ export const Theme = {
 
   light: {
     background: {
-      primary: '#FFFFFF',
-      secondary: '#F4F6F8',
+      primary: '#F4F6F8',
+      secondary: '#FFFFFF',
+    },
+    input: {
+      text: '#19202D',
+      checkbox: ' rgb(25, 32, 45, .1)',
+    },
+    button: {
+      normal: 'rgba(89, 100, 224, .10)',
+      hover: 'rgba(89, 100, 224, .35)',
     },
   },
   dark: {
     background: {
-      primary: '#F4F6F8',
+      primary: '#121721',
       secondary: '#19202D',
+    },
+    input: {
+      text: '#FFFFFF',
+      checkbox: 'rgba(255, 255, 255, .10)',
+    },
+    button: {
+      normal: 'rgba(255, 255, 255, .10)',
+      hover: 'rgba(255, 255, 255, .35)',
     },
   },
 
@@ -33,6 +49,10 @@ export const Theme = {
       lightgrey: '#F4F6F8',
       grey: '#9DAEC2',
       darkgrey: '#6E8098',
+    },
+    button: {
+      normal: '#5964E0',
+      hover: '#939BF4',
     },
   },
 
