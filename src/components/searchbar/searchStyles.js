@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: 111rem;
   height: 8rem;
-  background: ${({ theme }) => theme.color.secondary.white};
+  background: ${({ theme }) => theme[theme.mode].background.secondary};
   margin: 0 auto;
   position: absolute;
   bottom: 0;
@@ -28,7 +28,8 @@ export const InputGroup = styled.div`
   &:not(:last-of-type) {
     border-right: 1px solid rgba(110, 128, 152, 0.2);
   }
-  ${({ checkbox, theme }) => checkbox && theme.mixin.flex()};
+  position: relative;
+  ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
 `;
 
 export const Input = styled.input`
@@ -38,15 +39,16 @@ export const Input = styled.input`
   border: none;
   border-radius: 6px;
   outline: none;
-  padding-left: 3.2rem;
+  background: inherit;
 
-  ${({ checkbox, svg }) =>
+  ${({ theme, checkbox, svg }) =>
     checkbox &&
     `
       width: 2.4rem;
       height: 2.4rem;
       appearance: none;
       padding: 0;
+      margin-left: 3.2rem;
       margin-right: 1.6rem;
 
       &:checked::before {
@@ -63,22 +65,51 @@ export const Input = styled.input`
         width: 2.4rem;
         height: 2.4rem;
         border-radius: 3px;
-        background: rgba(25, 32, 45, .1);
+        background: ${theme[theme.mode].input.checkbox};
       }
     `}
 `;
 
-export const JobInput = styled(Input)``;
+export const Label = styled.label`
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  opacity: 0.5;
+  color: ${({ theme }) => theme[theme.mode].input.text};
+  z-index: 5;
+
+  ${({ text }) => text && `padding-left: 1.6rem; padding-top: .5rem;`};
+  ${({ bold }) => bold && `font-weight: bold; opacity: 1; `};
+`;
+
+export const FilteredInput = styled(Input)`
+  width: 100%;
+  height: 8rem;
+  padding-left: 7.2rem;
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme[theme.mode].input.text};
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+  &:not(:placeholder-shown) + ${Label} {
+    display: none;
+  }
+`;
 
 export const LocationInput = styled(Input)``;
 
 export const LabelWrapper = styled.div`
-  display: inline-block;
+  width: 100%;
+  height: 8rem;
   position: absolute;
-`;
 
-export const Label = styled.label`
-  font-size: 1.6rem;
-  color: black;
-  opacity: 0.5;
+  ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
+
+  & img {
+    padding-left: 3.2rem;
+    z-index: 5;
+  }
 `;

@@ -1,36 +1,51 @@
 import React from 'react';
-import Searchbar from './search';
+import Icon from '../icon';
+import Button from '../button';
+
+import {
+  Container,
+  InputGroup,
+  InputWrapper,
+  LabelWrapper,
+  Label,
+  Input,
+  FilteredInput,
+} from './searchStyles';
+
 import checkmark from '../../assets/desktop/icon-check.svg';
 import search from '../../assets/desktop/icon-search.svg';
 import location from '../../assets/desktop/icon-location.svg';
-import Icon from '../icon/icon';
 
-export default function SearchbarContainer() {
+export default function Searchbar() {
   return (
-    <Searchbar>
-      <Searchbar.InputWrapper>
-        <Searchbar.InputGroup>
-          <Searchbar.JobInput placeholder="" />
-          <Searchbar.LabelWrapper>
+    <Container>
+      <InputWrapper>
+        <InputGroup>
+          <LabelWrapper>
             <Icon src={search} alt="search-icon" />
-            <Searchbar.Label>
-              Filter by title, companies, expertise...
-            </Searchbar.Label>
-          </Searchbar.LabelWrapper>
-        </Searchbar.InputGroup>
-        <Searchbar.InputGroup>
-          <Searchbar.LocationInput placeholder="" />
-          <Searchbar.LabelWrapper>
-            <Icon src={location} alt="location-icon" />
-            <Searchbar.Label>Filter by location...</Searchbar.Label>
-          </Searchbar.LabelWrapper>
-        </Searchbar.InputGroup>
-        <Searchbar.InputGroup>
-          <Searchbar.Input type="checkbox" svg={checkmark} checkbox />
-          <Searchbar.Label>Full Time Only</Searchbar.Label>
-          <span>button</span>
-        </Searchbar.InputGroup>
-      </Searchbar.InputWrapper>
-    </Searchbar>
+            <FilteredInput id="job-input" placeholder=" " />
+            <Label htmlFor="job-input" text>
+              Filter by title, company, expertise
+            </Label>
+          </LabelWrapper>
+        </InputGroup>
+        <InputGroup>
+          <LabelWrapper>
+            <Icon src={location} alt="location-icon" pad />
+            <FilteredInput id="location-input" placeholder=" " />
+            <Label htmlFor="location-input" text>
+              Filter by location
+            </Label>
+          </LabelWrapper>
+        </InputGroup>
+        <InputGroup>
+          <LabelWrapper>
+            <Input type="checkbox" svg={checkmark} checkbox />
+            <Label bold>Full Time Only</Label>
+            <Button inputBtn>Search</Button>
+          </LabelWrapper>
+        </InputGroup>
+      </InputWrapper>
+    </Container>
   );
 }
