@@ -19,7 +19,6 @@ export const Button = styled.button`
 
 export const SearchbarButton = styled(Button)`
   max-width: 12.3rem;
-  margin-left: 2.7rem;
   margin-right: 1.6rem;
   background-color: ${({ theme }) => theme.color.button.normal};
 

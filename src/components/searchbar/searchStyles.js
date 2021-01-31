@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { media } from '../../styles/shared';
 
 export const Container = styled.div`
   width: 100%;
@@ -15,21 +16,15 @@ export const Container = styled.div`
 
 export const InputWrapper = styled.form`
   display: grid;
-  grid-template-columns: minmax(22.2rem, 46.3rem) minmax(21.3rem, 30rem) minmax(
-      25.2rem,
-      1fr
+  grid-template-columns: minmax(20rem, 1fr) minmax(20rem, 1fr) minmax(
+      min-content,
+      34.5rem
     );
   grid-template-rows: 8rem;
-`;
 
-export const InputGroup = styled.div`
-  width: 100%;
-  height: 100%;
-  &:not(:last-of-type) {
-    border-right: 1px solid rgba(110, 128, 152, 0.2);
-  }
-  position: relative;
-  ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
+  ${media.mobile`
+    grid-template-columns: 1fr;
+  `}
 `;
 
 export const Input = styled.input`
@@ -40,45 +35,47 @@ export const Input = styled.input`
   border-radius: 6px;
   outline: none;
   background: inherit;
+`;
 
-  ${({ theme, checkbox, svg }) =>
-    checkbox &&
-    `
-      width: 2.4rem;
-      height: 2.4rem;
-      appearance: none;
-      padding: 0;
-      margin-left: 3.2rem;
-      margin-right: 1.6rem;
+export const Checkbox = styled(Input)`
+  width: 2.4rem;
+  height: 2.4rem;
+  appearance: none;
+  padding: 0;
+  margin-left: 3.2rem;
+  margin-right: 1.6rem;
 
-      &:checked::before {
-        content: '';
-        background-color: #5964E0;
-        background-image: url(${svg});
-        background-repeat: no-repeat;
-        background-position: center;
-      }
+  ${media.tablet_lg`margin-left: 2rem`};
+  ${media.tablet`margin-left: 1rem`};
 
-      &::before {
-        content: '';
-        display: block;
-        width: 2.4rem;
-        height: 2.4rem;
-        border-radius: 3px;
-        background: ${theme[theme.mode].input.checkbox};
-      }
-    `}
+  &:checked::before {
+    content: '';
+    background-color: ${({ theme }) => theme.color.primary.deepblue};
+    background-image: ${({ svg }) => `url(${svg})`};
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 3px;
+    background: ${({ theme }) => theme[theme.mode].input.checkbox};
+  }
 `;
 
 export const Label = styled.label`
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   line-height: 1.6rem;
+  padding-top: 0.5rem;
   opacity: 0.5;
   color: ${({ theme }) => theme[theme.mode].input.text};
   z-index: 5;
 
-  ${({ text }) => text && `padding-left: 1.6rem; padding-top: .5rem;`};
-  ${({ bold }) => bold && `font-weight: bold; opacity: 1; `};
+  ${({ text }) => text && `font-size: 1.6rem;padding-left: 1.6rem;`};
+  ${({ bold }) => bold && `font-weight: bold;opacity: 1; padding-right: 2.7rem`};
 `;
 
 export const FilteredInput = styled(Input)`
@@ -94,22 +91,44 @@ export const FilteredInput = styled(Input)`
   bottom: 0;
   z-index: 1;
 
-  &:not(:placeholder-shown) + ${Label} {
+  ${media.tablet_lg`padding-left: 6.4rem`};
+  ${media.tablet`padding-left: 5rem`};
+`;
+
+export const LabelWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  position: absolute;
+  ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
+
+  & img {
+    margin-left: 3.2rem;
+    z-index: 5;
+
+    ${media.tablet_lg`margin-left: 2.4rem`};
+    ${media.tablet`margin-left: 1rem`};
+  }
+`;
+
+export const InputGroup = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
+
+  &:not(:last-of-type) {
+    border-right: 1px solid rgba(110, 128, 152, 0.2);
+  }
+
+  & ${FilteredInput}:not(:placeholder-shown) + ${LabelWrapper} > ${Label} {
     display: none;
   }
 `;
 
-export const LocationInput = styled(Input)``;
+export const CollapsibleInputGroup = styled(InputGroup)`
+  ${({ changeFlex }) => changeFlex && 'justify-content: flex-end'};
 
-export const LabelWrapper = styled.div`
-  width: 100%;
-  height: 8rem;
-  position: absolute;
-
-  ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
-
-  & img {
-    padding-left: 3.2rem;
-    z-index: 5;
-  }
+  ${media.mobile`
+    display: none;
+  `}
 `;
