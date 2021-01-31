@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Layout = styled.div`
   width: 100%;
@@ -12,3 +12,20 @@ const Layout = styled.div`
 export const LayoutWrapper = ({ relative = false, children }) => {
   return <Layout relative={relative}>{children}</Layout>;
 };
+
+export const SCREEN_SIZES = {
+  mobile: 576,
+  tablet: 768,
+  tablet_lg: 900,
+  desktop: 1440,
+};
+
+export const media = Object.keys(SCREEN_SIZES).reduce((accumulator, label) => {
+  const emSize = SCREEN_SIZES[label] / 16;
+  accumulator[label] = (...args) => css`
+    @media (max-width: ${emSize}em) {
+      ${css(...args)};
+    }
+  `;
+  return accumulator;
+}, {});

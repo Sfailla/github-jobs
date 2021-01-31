@@ -42,6 +42,7 @@ export const Theme = {
       violet: '#9E7F66',
       lightviolet: '#939Bf4',
       darkblue: '#19202D',
+      deepblue: '#5964E0',
       midnight: '#121721',
     },
     secondary: {
