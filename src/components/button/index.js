@@ -1,3 +1,8 @@
-import { Button, SearchbarButton } from './buttonStyles';
+import {
+  Button,
+  SearchbarButton,
+  MobileSearchButton,
+  IconButton,
+} from './buttonStyles';
 
-export { Button, SearchbarButton };
+export { Button, SearchbarButton, MobileSearchButton, IconButton };

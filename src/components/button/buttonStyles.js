@@ -9,6 +9,11 @@ export const Button = styled.button`
   outline: 0;
   cursor: pointer;
   border-radius: 5px;
+  background-color: ${({ theme }) => theme.color.button.normal};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.button.hover};
+  }
 
   font-size: 1.6rem;
   font-weight: bold;
@@ -20,11 +25,20 @@ export const Button = styled.button`
 export const SearchbarButton = styled(Button)`
   max-width: 12.3rem;
   margin-right: 1.6rem;
-  background-color: ${({ theme }) => theme.color.button.normal};
+  margin-left: 1rem;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.color.button.hover};
-  }
+  ${media.tablet_lg`width: 8rem;`}
+`;
 
-  ${media.tablet_lg`max-width: 8rem;`}
+export const MobileSearchButton = styled(Button)`
+  width: 4.8rem;
+  ${({ theme }) => theme.mixin.flex()};
+`;
+
+export const IconButton = styled.button`
+  width: auto;
+  height: auto;
+  border: 0;
+  outline: 0;
+  background: transparent;
 `;
