@@ -4,6 +4,7 @@ import { media } from '../../styles/shared';
 export const Container = styled.div`
   width: 100%;
   max-width: 111rem;
+  min-width: 32.7rem;
   height: 8rem;
   background: ${({ theme }) => theme[theme.mode].background.secondary};
   margin: 0 auto;
@@ -12,17 +13,22 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, 50%);
   border-radius: 6px;
-`;
 
-export const InputWrapper = styled.form`
   display: grid;
-  grid-template-columns: minmax(20rem, 1fr) minmax(20rem, 1fr) minmax(
-      min-content,
-      34.5rem
+  grid-template-columns: minmax(22rem, 46.3rem) minmax(20rem, 30rem) minmax(
+      25.2rem,
+      33.5rem
     );
   grid-template-rows: 8rem;
 
-  ${media.mobile`
+  ${media.tablet`
+    grid-template-columns: minmax(min-content, 22rem) minmax(min-content, 20rem) minmax(
+      min-content,
+      1fr
+    );
+  `}
+
+  ${media.tablet_sm`
     grid-template-columns: 1fr;
   `}
 `;
@@ -37,15 +43,32 @@ export const Input = styled.input`
   background: inherit;
 `;
 
+export const FilteredInput = styled(Input)`
+  width: 100%;
+  height: inherit;
+  padding-left: 7.2rem;
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme[theme.mode].input.text};
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+  ${media.tablet_lg`padding-left: 6.4rem`};
+  ${media.tablet`padding-left: 5rem`};
+  ${media.tablet_sm`padding-left: 2.8rem`};
+`;
+
 export const Checkbox = styled(Input)`
   width: 2.4rem;
   height: 2.4rem;
   appearance: none;
   padding: 0;
-  margin-left: 3.2rem;
   margin-right: 1.6rem;
+  margin-left: 3.2rem;
 
-  ${media.tablet_lg`margin-left: 2rem`};
   ${media.tablet`margin-left: 1rem`};
 
   &:checked::before {
@@ -74,43 +97,46 @@ export const Label = styled.label`
   color: ${({ theme }) => theme[theme.mode].input.text};
   z-index: 5;
 
-  ${({ text }) => text && `font-size: 1.6rem;padding-left: 1.6rem;`};
-  ${({ bold }) => bold && `font-weight: bold;opacity: 1; padding-right: 2.7rem`};
+  ${({ text }) => text && `font-size: 1.6rem;`};
+  ${({ bold }) => bold && `font-weight: bold;opacity: 1;white-space: nowrap`};
 `;
 
-export const FilteredInput = styled(Input)`
-  width: 100%;
-  height: 8rem;
-  padding-left: 7.2rem;
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme[theme.mode].input.text};
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-
-  ${media.tablet_lg`padding-left: 6.4rem`};
-  ${media.tablet`padding-left: 5rem`};
-`;
-
-export const LabelWrapper = styled.div`
-  width: 100%;
+export const Wrapper = styled.div`
   height: auto;
-  position: absolute;
+
   ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
 
   & img {
-    margin-left: 3.2rem;
     z-index: 5;
-
-    ${media.tablet_lg`margin-left: 2.4rem`};
-    ${media.tablet`margin-left: 1rem`};
   }
 `;
 
-export const InputGroup = styled.div`
+export const SearchWrapper = styled(Wrapper)`
+  padding-left: 3.2rem;
+
+  & label {
+    padding-left: 1.71rem;
+  }
+
+  ${media.tablet_lg`padding-left: 2.4rem`};
+  ${media.tablet`padding-left: 1rem`};
+  ${media.tablet_sm`
+    ${({ theme }) => theme.mixin.flex('space-between', 'center')};
+    width: 100%`};
+`;
+
+export const LocationWrapper = styled(Wrapper)`
+  padding-left: 3.8rem;
+
+  & label {
+    padding-left: 1.62rem;
+  }
+
+  ${media.tablet_lg`padding-left: 2.4rem`};
+  ${media.tablet`padding-left: 1.6rem`};
+`;
+
+export const Group = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
@@ -120,15 +146,13 @@ export const InputGroup = styled.div`
     border-right: 1px solid rgba(110, 128, 152, 0.2);
   }
 
-  & ${FilteredInput}:not(:placeholder-shown) + ${LabelWrapper} > ${Label} {
+  & ${FilteredInput}:not(:placeholder-shown) + ${Wrapper} > ${Label} {
     display: none;
   }
 `;
 
-export const CollapsibleInputGroup = styled(InputGroup)`
-  ${({ changeFlex }) => changeFlex && 'justify-content: flex-end'};
+export const CollapsibleGroup = styled(Group)`
+  ${({ justify }) => justify && 'justify-content: space-between'};
 
-  ${media.mobile`
-    display: none;
-  `}
+  ${media.tablet_sm`display: none;`}
 `;
