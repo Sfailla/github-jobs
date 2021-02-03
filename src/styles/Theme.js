@@ -6,6 +6,16 @@ export const Theme = {
       align-items: ${align};
       flex-direction: ${direction};
     `,
+    absolutePosition: (
+      top = '50%',
+      left = '50%',
+      transform = 'translate(-50%, -50%)'
+    ) => `
+      position: absolute;
+      top: ${top};
+      left: ${left};
+      ${transform && `transform: ${transform}`};
+    `,
   },
 
   light: {

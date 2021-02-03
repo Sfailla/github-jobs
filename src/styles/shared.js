@@ -14,7 +14,9 @@ export const LayoutWrapper = ({ relative = false, children }) => {
 };
 
 export const SCREEN_SIZES = {
-  mobile: 576,
+  mobile_sm: 375,
+  mobile: 500,
+  tablet_sm: 680,
   tablet: 768,
   tablet_lg: 900,
   desktop: 1440,
