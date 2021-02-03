@@ -1,17 +1,26 @@
 import styled from 'styled-components/macro';
+import { media } from '../../styles/shared';
 
 export const Background = styled.header`
   width: 100%;
   height: 16rem;
-  background: url(${({ src }) => src}) no-repeat left / cover;
+  background: url(${({ src }) => src});
+  background-repeat: no-repeat;
+  background-position: ${({ position }) => position};
+  background-size: cover;
   padding: 0 4rem;
   background-color: ${({ theme }) => theme[theme.mode].background.primary};
+
+  ${media.mobile`height: 13.2rem; padding: 0 2.4rem;`};
 `;
 
 export const Container = styled.div`
   width: 100%;
-  height: 16rem;
+  height: auto;
+  padding-top: 4.4rem;
   ${({ theme }) => theme.mixin.flex('space-between', 'center')};
+
+  ${media.mobile`padding-top: 3.2rem;`};
 `;
 
 export const Logo = styled.img`

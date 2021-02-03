@@ -1,8 +1,8 @@
 import React from 'react';
 import { Background, Container, Logo } from './headerStyles';
 
-function Header({ src, children }) {
-  return <Background src={src}>{children}</Background>;
+function Header({ children, ...otherProps }) {
+  return <Background {...otherProps}>{children}</Background>;
 }
 
 Header.Container = function HeaderContainer({ children, ...otherProps }) {

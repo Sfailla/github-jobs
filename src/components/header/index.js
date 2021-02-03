@@ -1,14 +1,21 @@
 import React from 'react';
 import Header from './header';
+import ToggleSwitch from '../toggle';
 import { LayoutWrapper } from '../../styles/shared';
+import useWindowSize from '../../hooks/useWindowSize';
+import { responsiveImg } from '../../utils/responsiveImg';
 
 import logo from '../../assets/desktop/logo.svg';
-import background from '../../assets/desktop/bg-pattern-header.svg';
-import ToggleSwitch from '../toggle';
+import desktopBG from '../../assets/desktop/bg-pattern-header.svg';
+import tabletBG from '../../assets/tablet/bg-pattern-header.svg';
+import mobileBG from '../../assets/mobile/bg-pattern-header.svg';
 
 function HeaderSection({ children }) {
+  const { width } = useWindowSize();
+  const images = [desktopBG, tabletBG, mobileBG];
+
   return (
-    <Header src={background}>
+    <Header src={responsiveImg(width, images)} position="left">
       <LayoutWrapper relative>
         <Header.Container>
           <Header.Logo src={logo} alt="logo-svg" />
