@@ -5,6 +5,7 @@ import Page from '../page';
 import { ThemeContext } from './context';
 
 import { ThemeProvider } from 'styled-components';
+import { SearchModal } from '../searchbar/searchModal';
 
 function App() {
   const [theme, setTheme] = React.useState({ mode: 'light' });
@@ -15,7 +16,9 @@ function App() {
           <Header>
             <Searchbar />
           </Header>
-          <Page name="jobs" />
+          <Page name="jobs">
+            <SearchModal />
+          </Page>
         </React.Fragment>
       </ThemeProvider>
     </ThemeContext.Provider>

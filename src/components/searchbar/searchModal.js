@@ -57,7 +57,7 @@ export function MobileControlButtons() {
   );
 }
 
-export function FilterSearchModal() {
+export function SearchModal() {
   return (
     <Container>
       <CollapsibleGroup>
