@@ -4,12 +4,11 @@ import App from './components/app/app';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'styled-components';
 import { Theme } from './styles/Theme';
-import { GlobalStyles } from './styles/global';
+// import { GlobalStyles } from './styles/global';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={Theme}>
-      <GlobalStyles />
       <App />
     </ThemeProvider>
   </React.StrictMode>,
