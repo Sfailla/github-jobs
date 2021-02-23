@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+
 import {
   CollapsibleGroup,
+  CollapsibleGroupModal,
   FilteredInput,
   LocationWrapper,
   Wrapper,
   Label,
-  Checkbox,
-} from '../searchbar/searchStyles';
-import { IconButton, MobileSearchButton, SearchbarButton } from '../button';
+  ModalCheckbox,
+} from './searchStyles';
+import { IconButton, MobileSearchButton, Button } from '../button';
 import Icon from '../icon';
-import { media } from '../../styles/shared';
 
 import search_white from '../../assets/desktop/icon-white-search.svg';
 import filter from '../../assets/mobile/icon-filter.svg';
@@ -18,7 +19,7 @@ import checkmark from '../../assets/desktop/icon-check.svg';
 import location from '../../assets/desktop/icon-location.svg';
 
 const MobileButtonContainer = styled.div`
-  width: 9.2rem;
+  width: 12rem;
   height: 4.8rem;
   margin-right: 1.6rem;
   ${({ theme }) => theme.mixin.flex('space-between', 'center')};
@@ -32,36 +33,34 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme[theme.mode].background.secondary};
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 7.2rem min-content 14.4rem;
+  grid-template-rows: 7.2rem 1fr;
+  overflow: hidden;
+
+  & > *:not(:last-child) {
+    border-bottom: 1px solid rgba(110, 128, 152, 0.2);
+  }
 
   ${({ theme }) => theme.mixin.absolutePosition()};
-`;
-
-const Divider = styled.span`
-  width: 100%;
-  height: 1px;
-  opacity: 0.2;
-  background-color: ${({ theme }) => theme.color.secondary.darkgrey};
 `;
 
 export function MobileControlButtons() {
   return (
     <MobileButtonContainer>
-      <IconButton>
-        <Icon src={filter} />
+      <IconButton onClick={() => console.log('clicked')}>
+        <Icon width={20} height={20} src={filter} />
       </IconButton>
       <MobileSearchButton>
-        <Icon src={search_white} />
+        <Icon width={24} height={20} src={search_white} />
       </MobileSearchButton>
     </MobileButtonContainer>
   );
 }
 
-export function SearchModal() {
+export function SearchModal({ checked, onChange }) {
   return (
     <Container>
       <CollapsibleGroup>
-        <FilteredInput id="location-input" placeholder=" " />
+        <FilteredInput id="location-input-modal" placeholder=" " />
         <LocationWrapper>
           <Icon src={location} alt="location-icon" />
           <Label htmlFor="location-input" text>
@@ -69,14 +68,21 @@ export function SearchModal() {
           </Label>
         </LocationWrapper>
       </CollapsibleGroup>
-      <Divider />
-      <CollapsibleGroup justify>
+      <CollapsibleGroupModal>
         <Wrapper>
-          <Checkbox type="checkbox" svg={checkmark} />
+          <ModalCheckbox
+            checked={checked}
+            onChange={onChange}
+            name="checked"
+            type="checkbox"
+            svg={checkmark}
+          />
           <Label bold>Full Time Only</Label>
         </Wrapper>
-        <SearchbarButton>Search</SearchbarButton>
-      </CollapsibleGroup>
+        <Button onClick={() => console.log('filtered click')} fullWidth>
+          Search
+        </Button>
+      </CollapsibleGroupModal>
     </Container>
   );
 }

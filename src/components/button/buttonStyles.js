@@ -9,17 +9,16 @@ export const Button = styled.button`
   outline: 0;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  transition: 0.2s ease-in-out;
   background-color: ${({ theme }) => theme.color.button.normal};
+  ${({ fullWidth }) => fullWidth && `max-width: 100%`};
 
   &:hover {
     background-color: ${({ theme }) => theme.color.button.hover};
   }
-
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: white;
-
-  transition: 0.2s ease-in-out;
 `;
 
 export const SearchbarButton = styled(Button)`
@@ -36,9 +35,11 @@ export const MobileSearchButton = styled(Button)`
 `;
 
 export const IconButton = styled.button`
-  width: auto;
-  height: auto;
+  width: 48px;
+  height: 48px;
   border: 0;
   outline: 0;
   background: transparent;
+  cursor: pointer;
+  z-index: 10;
 `;

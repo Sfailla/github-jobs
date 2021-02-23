@@ -1,26 +1,26 @@
 import React from 'react';
 import {
   Label,
-  Checkbox,
   Container,
   Group,
-  Wrapper,
   SearchWrapper,
-  LocationWrapper,
   FilteredInput,
   CollapsibleGroup,
+  LocationWrapper,
+  Wrapper,
+  Checkbox,
 } from './searchStyles';
 
-import checkmark from '../../assets/desktop/icon-check.svg';
-import location from '../../assets/desktop/icon-location.svg';
-import search from '../../assets/desktop/icon-search.svg';
-
 import Icon from '../icon';
-import { SearchbarButton } from '../button';
 import { MobileControlButtons } from './searchModal';
-import useWindowSize from '../../hooks/useWindowSize';
+import { SearchbarButton } from '../button';
 
-export default function Searchbar() {
+import useWindowSize from '../../hooks/useWindowSize';
+import search from '../../assets/desktop/icon-search.svg';
+import location from '../../assets/desktop/icon-location.svg';
+import checkmark from '../../assets/desktop/icon-check.svg';
+
+export default function Searchbar({ checked, onChange }) {
   const { width } = useWindowSize();
   const isSmallScreen = width < 500 || (width > 680 && width < 1080);
 
@@ -49,10 +49,18 @@ export default function Searchbar() {
       </CollapsibleGroup>
       <CollapsibleGroup justify>
         <Wrapper>
-          <Checkbox type="checkbox" svg={checkmark} />
+          <Checkbox
+            checked={checked}
+            onChange={onChange}
+            name="checked"
+            type="checkbox"
+            svg={checkmark}
+          />
           <Label bold>{width > 800 ? 'Full Time Only' : 'Full Time'}</Label>
         </Wrapper>
-        <SearchbarButton>Search</SearchbarButton>
+        <SearchbarButton onClick={() => console.log('filtered click')}>
+          Search
+        </SearchbarButton>
       </CollapsibleGroup>
     </Container>
   );

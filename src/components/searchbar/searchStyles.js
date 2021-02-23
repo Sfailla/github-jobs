@@ -13,13 +13,18 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, 50%);
   border-radius: 6px;
+  overflow: hidden;
 
   display: grid;
   grid-template-columns: minmax(22rem, 46.3rem) minmax(20rem, 30rem) minmax(
       25.2rem,
-      33.5rem
+      1fr
     );
   grid-template-rows: 8rem;
+
+  & > *:not(:last-child) {
+    border-right: 1px solid rgba(110, 128, 152, 0.2);
+  }
 
   ${media.tablet`
     grid-template-columns: minmax(min-content, 22rem) minmax(min-content, 20rem) minmax(
@@ -89,6 +94,10 @@ export const Checkbox = styled(Input)`
   }
 `;
 
+export const ModalCheckbox = styled(Checkbox)`
+  margin-left: 0;
+`;
+
 export const Label = styled.label`
   font-size: 1.5rem;
   line-height: 1.6rem;
@@ -142,10 +151,6 @@ export const Group = styled.div`
   position: relative;
   ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
 
-  &:not(:last-of-type) {
-    border-right: 1px solid rgba(110, 128, 152, 0.2);
-  }
-
   & ${FilteredInput}:not(:placeholder-shown) + ${Wrapper} > ${Label} {
     display: none;
   }
@@ -153,6 +158,9 @@ export const Group = styled.div`
 
 export const CollapsibleGroup = styled(Group)`
   ${({ justify }) => justify && 'justify-content: space-between'};
+`;
 
-  ${media.tablet_sm`display: none;`}
+export const CollapsibleGroupModal = styled(Group)`
+  padding: 2.4rem;
+  ${({ theme }) => theme.mixin.flex('space-between', 'flex-start', 'column')};
 `;

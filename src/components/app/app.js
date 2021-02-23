@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../header';
-import Searchbar from '../searchbar';
 import Page from '../page';
 import { ThemeContext } from './context';
 
@@ -9,16 +8,17 @@ import { SearchModal } from '../searchbar/searchModal';
 
 function App() {
   const [theme, setTheme] = React.useState({ mode: 'light' });
+  const [checked, setChecked] = React.useState(false);
+  const handleChange = () => {
+    setChecked(!checked);
+  };
   return (
     <ThemeContext.Provider value={{ setTheme }}>
       <ThemeProvider theme={theme}>
         <React.Fragment>
-          <Header>
-            <Searchbar />
-          </Header>
-          <Page name="jobs">
-            <SearchModal />
-          </Page>
+          <SearchModal onChange={handleChange} checked={checked} />
+          <Header onChange={handleChange} checked={checked} />
+          <Page name="jobs" />
         </React.Fragment>
       </ThemeProvider>
     </ThemeContext.Provider>
