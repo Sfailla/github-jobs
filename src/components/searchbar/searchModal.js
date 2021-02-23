@@ -35,6 +35,7 @@ const Container = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 7.2rem 1fr;
   overflow: hidden;
+  z-index: 10;
 
   & > *:not(:last-child) {
     border-bottom: 1px solid rgba(110, 128, 152, 0.2);
@@ -43,10 +44,10 @@ const Container = styled.div`
   ${({ theme }) => theme.mixin.absolutePosition()};
 `;
 
-export function MobileControlButtons() {
+export function MobileFilterButtons({ setShowModal }) {
   return (
     <MobileButtonContainer>
-      <IconButton onClick={() => console.log('clicked')}>
+      <IconButton onClick={() => setShowModal(true)}>
         <Icon width={20} height={20} src={filter} />
       </IconButton>
       <MobileSearchButton>
@@ -56,8 +57,8 @@ export function MobileControlButtons() {
   );
 }
 
-export function SearchModal({ checked, onChange }) {
-  return (
+export function SearchModal({ show, checked, onChange }) {
+  return show ? (
     <Container>
       <CollapsibleGroup>
         <FilteredInput id="location-input-modal" placeholder=" " />
@@ -84,5 +85,5 @@ export function SearchModal({ checked, onChange }) {
         </Button>
       </CollapsibleGroupModal>
     </Container>
-  );
+  ) : null;
 }

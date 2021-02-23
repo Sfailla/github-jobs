@@ -63,7 +63,6 @@ export const FilteredInput = styled(Input)`
 
   ${media.tablet_lg`padding-left: 6.4rem`};
   ${media.tablet`padding-left: 5rem`};
-  ${media.tablet_sm`padding-left: 2.8rem`};
 `;
 
 export const Checkbox = styled(Input)`
@@ -73,8 +72,6 @@ export const Checkbox = styled(Input)`
   padding: 0;
   margin-right: 1.6rem;
   margin-left: 3.2rem;
-
-  ${media.tablet`margin-left: 1rem`};
 
   &:checked::before {
     content: '';
@@ -152,12 +149,12 @@ export const Group = styled.div`
   ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
 
   & ${FilteredInput}:not(:placeholder-shown) + ${Wrapper} > ${Label} {
-    display: none;
+    visibility: hidden;
   }
 `;
 
 export const CollapsibleGroup = styled(Group)`
-  ${({ justify }) => justify && 'justify-content: space-between'};
+  justify-content: space-between;
 `;
 
 export const CollapsibleGroupModal = styled(Group)`
