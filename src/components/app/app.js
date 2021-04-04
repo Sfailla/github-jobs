@@ -21,9 +21,11 @@ function App() {
   const [theme, setTheme] = React.useState({ mode: 'light' });
   const [checked, setChecked] = React.useState(false);
   const [showModal, setShowModal] = React.useState(false);
+
   const handleChange = () => {
-    setChecked(!checked);
+    setChecked(checked => !checked);
   };
+
   return (
     <ThemeContext.Provider value={{ setTheme, showModal, setShowModal }}>
       <ThemeProvider theme={theme}>
