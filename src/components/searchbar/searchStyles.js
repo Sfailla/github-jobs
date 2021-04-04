@@ -61,7 +61,7 @@ export const FilteredInput = styled(Input)`
   bottom: 0;
   z-index: 1;
 
-  ${media.tablet_lg`padding-left: 6.4rem`};
+  // ${media.tablet_lg`padding-left: 6.4rem`};
   ${media.tablet`padding-left: 5rem`};
 `;
 
@@ -124,21 +124,21 @@ export const SearchWrapper = styled(Wrapper)`
     padding-left: 1.71rem;
   }
 
-  ${media.tablet_lg`padding-left: 2.4rem`};
-  ${media.tablet`padding-left: 1rem`};
+  // ${media.tablet_lg`padding-left: 2.4rem`};
+  // ${media.tablet`padding-left: 1rem`};
   ${media.tablet_sm`
     ${({ theme }) => theme.mixin.flex('space-between', 'center')};
     width: 100%`};
 `;
 
 export const LocationWrapper = styled(Wrapper)`
-  padding-left: 3.8rem;
+  padding-left: 3.2rem;
 
   & label {
     padding-left: 1.62rem;
   }
 
-  ${media.tablet_lg`padding-left: 2.4rem`};
+  // ${media.tablet_lg`padding-left: 2.4rem`};
   ${media.tablet`padding-left: 1.6rem`};
 `;
 

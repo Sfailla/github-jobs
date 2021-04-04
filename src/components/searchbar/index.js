@@ -24,8 +24,8 @@ import { ThemeContext } from '../app/context';
 export default function Searchbar({ checked, onChange }) {
   const { width } = useWindowSize();
   const { setShowModal } = React.useContext(ThemeContext);
-  const isSmallScreen = width < 500 || (width >= 680 && width < 1080);
-  const isLargeScreen = width > 679;
+  const renderShortText = width < 500 || (width > 700 && width < 1050);
+  const isLargeScreen = width > 700;
 
   return (
     <Container>
@@ -33,8 +33,8 @@ export default function Searchbar({ checked, onChange }) {
         <FilteredInput id="job-input" placeholder=" " />
         <SearchWrapper>
           {isLargeScreen && <Icon src={search} alt="search-icon" />}
-          <Label htmlFor="job-input" text>
-            {isSmallScreen
+          <Label text>
+            {renderShortText
               ? 'Filter by title...'
               : 'Filter by title, company, expertise...'}
           </Label>
@@ -46,7 +46,7 @@ export default function Searchbar({ checked, onChange }) {
           <CollapsibleGroup>
             <FilteredInput id="location-input" placeholder=" " />
             <LocationWrapper>
-              <Icon src={location} alt="location-icon" />
+              <Icon width={17} src={location} alt="location-icon" />
               <Label htmlFor="location-input" text>
                 Filter by location...
               </Label>
