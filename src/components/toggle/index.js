@@ -19,7 +19,7 @@ export default function ToggleSwitch() {
 
   return (
     <Toggle>
-      <Icon src={sun} />
+      <Icon width={20} height={18} src={sun} />
       <Toggle.Switch
         active={active}
         onClick={() => {
@@ -27,7 +27,7 @@ export default function ToggleSwitch() {
           handleTheme();
         }}
       />
-      <Icon src={moon} />
+      <Icon width={12} height={12} src={moon} />
     </Toggle>
   );
 }
