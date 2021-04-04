@@ -17,6 +17,7 @@ import search_white from '../../assets/desktop/icon-white-search.svg';
 import filter from '../../assets/mobile/icon-filter.svg';
 import checkmark from '../../assets/desktop/icon-check.svg';
 import location from '../../assets/desktop/icon-location.svg';
+import { AppContext } from '../../context';
 
 const MobileButtonContainer = styled.div`
   width: 12rem;
@@ -57,8 +58,9 @@ export function MobileFilterButtons({ setShowModal }) {
   );
 }
 
-export function SearchModal({ show, checked, onChange }) {
-  return show ? (
+export function SearchModal({ checked, onChange }) {
+  const { showModal } = React.useContext(AppContext);
+  return showModal ? (
     <Container>
       <CollapsibleGroup>
         <FilteredInput id="location-input-modal" placeholder=" " />

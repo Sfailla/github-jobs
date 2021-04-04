@@ -4,11 +4,11 @@ import Icon from '../icon';
 
 import sun from '../../assets/desktop/icon-sun.svg';
 import moon from '../../assets/desktop/icon-moon.svg';
-import { ThemeContext } from '../app/context';
+import { AppContext } from '../../context';
 
 export default function ToggleSwitch() {
   const [active, setActive] = React.useState(false);
-  const { setTheme } = React.useContext(ThemeContext);
+  const { setTheme } = React.useContext(AppContext);
 
   const handleToggle = () => setActive(!active);
   const handleTheme = () => {

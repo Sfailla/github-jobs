@@ -19,11 +19,11 @@ import useWindowSize from '../../hooks/useWindowSize';
 import search from '../../assets/desktop/icon-search.svg';
 import location from '../../assets/desktop/icon-location.svg';
 import checkmark from '../../assets/desktop/icon-check.svg';
-import { ThemeContext } from '../app/context';
+import { AppContext } from '../../context';
 
 export default function Searchbar({ checked, onChange }) {
   const { width } = useWindowSize();
-  const { setShowModal } = React.useContext(ThemeContext);
+  const { setShowModal } = React.useContext(AppContext);
   const renderShortText = width < 500 || (width > 700 && width < 1050);
   const isLargeScreen = width > 700;
 
