@@ -8,8 +8,9 @@ import {
   LocationWrapper,
   Wrapper,
   Label,
-  ModalCheckbox,
+  ModalCheckbox
 } from './searchStyles';
+
 import { IconButton, MobileSearchButton, Button } from '../button';
 import Icon from '../icon';
 
@@ -17,13 +18,13 @@ import search_white from '../../assets/desktop/icon-white-search.svg';
 import filter from '../../assets/mobile/icon-filter.svg';
 import checkmark from '../../assets/desktop/icon-check.svg';
 import location from '../../assets/desktop/icon-location.svg';
-import { AppContext } from '../../context';
+import { AppContext } from '../../contexts';
 
 const MobileButtonContainer = styled.div`
   width: 12rem;
   height: 4.8rem;
   margin-right: 1.6rem;
-  ${({ theme }) => theme.mixin.flex('space-between', 'center')};
+  ${({ theme: { theme } }) => theme.mixin.flex('space-between', 'center')};
 `;
 
 const Container = styled.div`
@@ -31,7 +32,7 @@ const Container = styled.div`
   max-width: 32.7rem;
   height: 21.7rem;
   border-radius: 6px;
-  background-color: ${({ theme }) => theme[theme.mode].background.secondary};
+  background-color: ${({ theme: { theme, mode } }) => theme[mode].background.secondary};
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 7.2rem 1fr;
@@ -42,7 +43,7 @@ const Container = styled.div`
     border-bottom: 1px solid rgba(110, 128, 152, 0.2);
   }
 
-  ${({ theme }) => theme.mixin.absolutePosition()};
+  ${({ theme: { theme } }) => theme.mixin.absoluteCenter()};
 `;
 
 export function MobileFilterButtons({ setShowModal }) {

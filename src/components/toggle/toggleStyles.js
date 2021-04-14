@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 11.2rem;
   height: 2.4rem;
 
-  ${({ theme }) => theme.mixin.flex('space-between', 'center')};
+  ${({ theme: { theme } }) => theme.mixin.flex('space-between', 'center')};
 `;
 
 export const Switch = styled.div`
@@ -21,7 +21,7 @@ export const Switch = styled.div`
   cursor: pointer;
   user-select: none;
 
-  background-color: ${({ theme }) => theme.color.secondary.white};
+  background-color: ${({ theme: { theme } }) => theme.color.secondary.white};
 `;
 
 export const Slider = styled.span`
@@ -30,9 +30,9 @@ export const Slider = styled.span`
   width: ${TOGGLE_CONTROL_SIZE}px;
   height: ${TOGGLE_CONTROL_SIZE}px;
   border-radius: 5rem;
-  background-color: ${({ theme }) => theme.color.primary.deepblue};
+  background-color: ${({ theme: { theme } }) => theme.color.primary.deepblue};
   position: absolute;
   top: ${TOGGLE_GUTTER}px;
-  left: ${({ active }) => (active ? `${TOGGLE_TRANSLATE}px` : `${TOGGLE_GUTTER}px`)};
+  left: ${({ toggle }) => (toggle ? `${TOGGLE_TRANSLATE}px` : `${TOGGLE_GUTTER}px`)};
   transition: left 0.1s linear;
 `;

@@ -5,10 +5,10 @@ export default function Toggle({ children, ...otherProps }) {
   return <Container {...otherProps}>{children}</Container>;
 }
 
-Toggle.Switch = function ToggleSwitch({ active, ...otherProps }) {
+Toggle.Switch = function ToggleSwitch({ toggle, ...otherProps }) {
   return (
     <Switch {...otherProps}>
-      <Slider active={active} />
+      <Slider toggle={toggle} />
     </Switch>
   );
 };

@@ -8,7 +8,7 @@ import {
   CollapsibleGroup,
   LocationWrapper,
   Wrapper,
-  Checkbox,
+  Checkbox
 } from './searchStyles';
 
 import Icon from '../icon';
@@ -19,7 +19,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 import search from '../../assets/desktop/icon-search.svg';
 import location from '../../assets/desktop/icon-location.svg';
 import checkmark from '../../assets/desktop/icon-check.svg';
-import { AppContext } from '../../context';
+import { AppContext } from '../../contexts';
 
 export default function Searchbar({ checked, onChange }) {
   const { width } = useWindowSize();

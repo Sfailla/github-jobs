@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+export const headerHeight = '16rem';
+
 const Layout = styled.div`
   width: 100%;
   height: 100%;

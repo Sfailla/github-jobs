@@ -6,7 +6,7 @@ export const Container = styled.div`
   max-width: 111rem;
   min-width: 32.7rem;
   height: 8rem;
-  background: ${({ theme }) => theme[theme.mode].background.secondary};
+  background: ${({ theme: { theme, mode } }) => theme[mode].background.secondary};
   margin: 0 auto;
   position: absolute;
   bottom: 0;
@@ -16,10 +16,7 @@ export const Container = styled.div`
   overflow: hidden;
 
   display: grid;
-  grid-template-columns: minmax(22rem, 46.3rem) minmax(20rem, 30rem) minmax(
-      25.2rem,
-      1fr
-    );
+  grid-template-columns: minmax(22rem, 46.3rem) minmax(20rem, 30rem) minmax(25.2rem, 1fr);
   grid-template-rows: 8rem;
 
   & > *:not(:last-child) {
@@ -53,7 +50,7 @@ export const FilteredInput = styled(Input)`
   height: inherit;
   padding-left: 7.2rem;
   font-size: 1.6rem;
-  color: ${({ theme }) => theme[theme.mode].input.text};
+  color: ${({ theme: { theme, mode } }) => theme[mode].input.text};
   position: absolute;
   top: 0;
   left: 0;
@@ -75,7 +72,7 @@ export const Checkbox = styled(Input)`
 
   &:checked::before {
     content: '';
-    background-color: ${({ theme }) => theme.color.primary.deepblue};
+    background-color: ${({ theme: { theme } }) => theme.color.primary.deepblue};
     background-image: ${({ svg }) => `url(${svg})`};
     background-repeat: no-repeat;
     background-position: center;
@@ -87,7 +84,7 @@ export const Checkbox = styled(Input)`
     width: 2.4rem;
     height: 2.4rem;
     border-radius: 3px;
-    background: ${({ theme }) => theme[theme.mode].input.checkbox};
+    background: ${({ theme: { theme, mode } }) => theme[mode].input.checkbox};
   }
 `;
 
@@ -100,7 +97,7 @@ export const Label = styled.label`
   line-height: 1.6rem;
   padding-top: 0.5rem;
   opacity: 0.5;
-  color: ${({ theme }) => theme[theme.mode].input.text};
+  color: ${({ theme: { theme, mode } }) => theme[mode].input.text};
   z-index: 5;
 
   ${({ text }) => text && `font-size: 1.6rem;`};
@@ -110,7 +107,7 @@ export const Label = styled.label`
 export const Wrapper = styled.div`
   height: auto;
 
-  ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
+  ${({ theme: { theme } }) => theme.mixin.flex('flex-start', 'center')};
 
   & img {
     z-index: 5;
@@ -127,7 +124,7 @@ export const SearchWrapper = styled(Wrapper)`
   // ${media.tablet_lg`padding-left: 2.4rem`};
   // ${media.tablet`padding-left: 1rem`};
   ${media.tablet_sm`
-    ${({ theme }) => theme.mixin.flex('space-between', 'center')};
+    ${({ theme: { theme } }) => theme.mixin.flex('space-between', 'center')};
     width: 100%`};
 `;
 
@@ -146,7 +143,7 @@ export const Group = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  ${({ theme }) => theme.mixin.flex('flex-start', 'center')};
+  ${({ theme: { theme } }) => theme.mixin.flex('flex-start', 'center')};
 
   & ${FilteredInput}:not(:placeholder-shown) + ${Wrapper} > ${Label} {
     visibility: hidden;
@@ -159,5 +156,5 @@ export const CollapsibleGroup = styled(Group)`
 
 export const CollapsibleGroupModal = styled(Group)`
   padding: 2.4rem;
-  ${({ theme }) => theme.mixin.flex('space-between', 'flex-start', 'column')};
+  ${({ theme: { theme } }) => theme.mixin.flex('space-between', 'flex-start', 'column')};
 `;
