@@ -6,13 +6,17 @@ export const AppContext = React.createContext();
 
 export const AppContextProvider = ({ children }) => {
   const [showModal, setShowModal] = React.useState(false);
-  const [theme, setTheme] = React.useState({ mode: 'light' });
+  const [mode, setMode] = React.useState('light');
+
+  const values = {
+    showModal,
+    setShowModal,
+    setMode
+  };
 
   return (
-    <AppContext.Provider value={{ showModal, setShowModal, setTheme }}>
-      <ThemeProvider theme={theme}>
-        <ThemeProvider theme={Theme}>{children}</ThemeProvider>
-      </ThemeProvider>
+    <AppContext.Provider value={values}>
+      <ThemeProvider theme={{ mode, theme: Theme }}>{children}</ThemeProvider>
     </AppContext.Provider>
   );
 };
