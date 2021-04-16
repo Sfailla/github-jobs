@@ -12,12 +12,11 @@ import {
 } from './searchStyles';
 
 import { IconButton, MobileSearchButton, Button } from '../button';
-import Icon from '../icon';
 
-import search_white from '../../assets/desktop/icon-white-search.svg';
-import filter from '../../assets/mobile/icon-filter.svg';
+import { ReactComponent as Search } from '../../assets/desktop/icon-white-search.svg';
+import { ReactComponent as Filter } from '../../assets/mobile/icon-filter.svg';
 import checkmark from '../../assets/desktop/icon-check.svg';
-import location from '../../assets/desktop/icon-location.svg';
+import { ReactComponent as Location } from '../../assets/desktop/icon-location.svg';
 import { AppContext } from '../../contexts';
 
 const MobileButtonContainer = styled.div`
@@ -50,10 +49,10 @@ export function MobileFilterButtons({ setShowModal }) {
   return (
     <MobileButtonContainer>
       <IconButton onClick={() => setShowModal(true)}>
-        <Icon width={20} height={20} src={filter} />
+        <Filter width={20} height={20} />
       </IconButton>
       <MobileSearchButton>
-        <Icon width={24} height={20} src={search_white} />
+        <Search width={24} height={20} />
       </MobileSearchButton>
     </MobileButtonContainer>
   );
@@ -66,7 +65,7 @@ export function SearchModal({ checked, onChange }) {
       <CollapsibleGroup>
         <FilteredInput id="location-input-modal" placeholder=" " />
         <LocationWrapper>
-          <Icon src={location} alt="location-icon" />
+          <Location />
           <Label htmlFor="location-input" text>
             Filter by location...
           </Label>

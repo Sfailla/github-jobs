@@ -1,74 +1,18 @@
-import React from 'react';
-import {
-  Label,
-  Container,
-  Group,
-  SearchWrapper,
-  FilteredInput,
-  CollapsibleGroup,
-  LocationWrapper,
-  Wrapper,
-  Checkbox
-} from './searchStyles';
+import React from 'react'
+import { Container, Section } from './searchStyles'
 
-import Icon from '../icon';
-import { MobileFilterButtons } from './searchModal';
-import { SearchbarButton } from '../button';
-import useWindowSize from '../../hooks/useWindowSize';
+// import useWindowSize from '../../hooks/useWindowSize';
 
-import search from '../../assets/desktop/icon-search.svg';
-import location from '../../assets/desktop/icon-location.svg';
-import checkmark from '../../assets/desktop/icon-check.svg';
-import { AppContext } from '../../contexts';
+import { ReactComponent as SearchIcon } from '../../assets/desktop/icon-search.svg'
+import { ReactComponent as LocationIcon } from '../../assets/desktop/icon-location.svg'
+import { ReactComponent as CheckmarkIcon } from '../../assets/desktop/icon-check.svg'
 
-export default function Searchbar({ checked, onChange }) {
-  const { width } = useWindowSize();
-  const { setShowModal } = React.useContext(AppContext);
-  const renderShortText = width < 500 || (width > 700 && width < 1050);
-  const isLargeScreen = width > 700;
-
-  return (
-    <Container>
-      <Group>
-        <FilteredInput id="job-input" placeholder=" " />
-        <SearchWrapper>
-          {isLargeScreen && <Icon src={search} alt="search-icon" />}
-          <Label text>
-            {renderShortText
-              ? 'Filter by title...'
-              : 'Filter by title, company, expertise...'}
-          </Label>
-          {!isLargeScreen && <MobileFilterButtons setShowModal={setShowModal} />}
-        </SearchWrapper>
-      </Group>
-      {isLargeScreen && (
-        <React.Fragment>
-          <CollapsibleGroup>
-            <FilteredInput id="location-input" placeholder=" " />
-            <LocationWrapper>
-              <Icon width={17} src={location} alt="location-icon" />
-              <Label htmlFor="location-input" text>
-                Filter by location...
-              </Label>
-            </LocationWrapper>
-          </CollapsibleGroup>
-          <CollapsibleGroup>
-            <Wrapper>
-              <Checkbox
-                checked={checked}
-                onChange={onChange}
-                name="checked"
-                type="checkbox"
-                svg={checkmark}
-              />
-              <Label bold>{width > 1150 ? 'Full Time Only' : 'Full Time'}</Label>
-            </Wrapper>
-            <SearchbarButton onClick={() => console.log('filtered click')}>
-              Search
-            </SearchbarButton>
-          </CollapsibleGroup>
-        </React.Fragment>
-      )}
-    </Container>
-  );
+export default function Searchbar({ children }) {
+  return <Container>{children}</Container>
 }
+
+function SearchbarSection({ children, ...props }) {
+  return <Section {...props}>{children}</Section>
+}
+
+Searchbar.Section = SearchbarSection

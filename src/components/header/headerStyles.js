@@ -22,8 +22,3 @@ export const Container = styled.div`
 
   ${media.mobile`padding-top: 3.2rem;`};
 `;
-
-export const Logo = styled.img`
-  width: 11.5rem;
-  height: 3.2rem;
-`;
