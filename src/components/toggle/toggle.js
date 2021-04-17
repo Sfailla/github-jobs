@@ -1,13 +1,13 @@
 import React from 'react'
 import { Container, Switch, Slider } from './toggleStyles'
 
-export default function Toggle({ children, ...otherProps }) {
-  return <Container {...otherProps}>{children}</Container>
+export default function Toggle({ children, ...props }) {
+  return <Container {...props}>{children}</Container>
 }
 
-Toggle.Switch = function ToggleSwitch({ toggle, ...otherProps }) {
+Toggle.Switch = function ToggleSwitch({ toggle, handleToggle, ...props }) {
   return (
-    <Switch {...otherProps}>
+    <Switch {...props}>
       <Slider {...{ toggle }} />
     </Switch>
   )

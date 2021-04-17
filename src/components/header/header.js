@@ -1,12 +1,6 @@
-import React from 'react';
-import { Background, Container } from './headerStyles';
+import React from 'react'
+import { Background } from './headerStyles'
 
-function Header({ children, ...otherProps }) {
-  return <Background {...otherProps}>{children}</Background>;
+export default function Header({ children, ...props }) {
+  return <Background {...props}>{children}</Background>
 }
-
-Header.Container = function HeaderContainer({ children, ...otherProps }) {
-  return <Container {...otherProps}>{children}</Container>;
-};
-
-export default Header;
