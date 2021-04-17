@@ -1,5 +1,5 @@
-import styled from 'styled-components/macro';
-import { media } from '../../styles/shared';
+import styled from 'styled-components/macro'
+// import { media } from '../../styles/shared'
 
 export const Container = styled.div`
   width: 100%;
@@ -21,20 +21,9 @@ export const Container = styled.div`
   & > *:not(:last-child) {
     border-right: 1px solid rgba(110, 128, 152, 0.2);
   }
-
-  /* ${media.tablet`
-    grid-template-columns: minmax(min-content, 22rem) minmax(min-content, 20rem) minmax(
-      min-content,
-      1fr
-    );
-  `}
-
-  ${media.tablet_sm`
-    grid-template-columns: 1fr;
-  `} */
-`;
+`
 
 export const Section = styled.div`
   width: 100%;
   height: 100%;
-`;
+`

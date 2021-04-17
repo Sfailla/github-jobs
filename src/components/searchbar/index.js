@@ -1,18 +1,22 @@
 import React from 'react'
-import { Container, Section } from './searchStyles'
+import Searchbar from './searchBar'
+import InputGroup from './components/field'
+import { SearchIcon } from '../../icons'
 
-// import useWindowSize from '../../hooks/useWindowSize';
-
-import { ReactComponent as SearchIcon } from '../../assets/desktop/icon-search.svg'
-import { ReactComponent as LocationIcon } from '../../assets/desktop/icon-location.svg'
-import { ReactComponent as CheckmarkIcon } from '../../assets/desktop/icon-check.svg'
-
-export default function Searchbar({ children }) {
-  return <Container>{children}</Container>
+const SearchbarContainer = () => {
+  return (
+    <Searchbar>
+      <Searchbar.Section>
+        <InputGroup>
+          <SearchIcon />
+          <InputGroup.Label>Filter by title, companies, expertise…</InputGroup.Label>
+          <InputGroup.Input />
+        </InputGroup>
+      </Searchbar.Section>
+      <Searchbar.Section>This is section 2</Searchbar.Section>
+      <Searchbar.Section>This is section 3</Searchbar.Section>
+    </Searchbar>
+  )
 }
 
-function SearchbarSection({ children, ...props }) {
-  return <Section {...props}>{children}</Section>
-}
-
-Searchbar.Section = SearchbarSection
+export default SearchbarContainer

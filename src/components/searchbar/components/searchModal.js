@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from 'react'
+import styled from 'styled-components/macro'
 
 import {
   CollapsibleGroup,
@@ -9,22 +9,22 @@ import {
   Wrapper,
   Label,
   ModalCheckbox
-} from './searchStyles';
+} from '../searchStyles'
 
-import { IconButton, MobileSearchButton, Button } from '../button';
+import { IconButton, MobileSearchButton, Button } from '../../button'
 
-import { ReactComponent as Search } from '../../assets/desktop/icon-white-search.svg';
-import { ReactComponent as Filter } from '../../assets/mobile/icon-filter.svg';
-import checkmark from '../../assets/desktop/icon-check.svg';
-import { ReactComponent as Location } from '../../assets/desktop/icon-location.svg';
-import { AppContext } from '../../contexts';
+import { ReactComponent as Search } from '../../assets/desktop/icon-white-search.svg'
+import { ReactComponent as Filter } from '../../assets/mobile/icon-filter.svg'
+import checkmark from '../../assets/desktop/icon-check.svg'
+import { ReactComponent as Location } from '../../assets/desktop/icon-location.svg'
+import { AppContext } from '../../../contexts'
 
 const MobileButtonContainer = styled.div`
   width: 12rem;
   height: 4.8rem;
   margin-right: 1.6rem;
   ${({ theme: { theme } }) => theme.mixin.flex('space-between', 'center')};
-`;
+`
 
 const Container = styled.div`
   width: 100%;
@@ -43,7 +43,7 @@ const Container = styled.div`
   }
 
   ${({ theme: { theme } }) => theme.mixin.absoluteCenter()};
-`;
+`
 
 export function MobileFilterButtons({ setShowModal }) {
   return (
@@ -55,11 +55,11 @@ export function MobileFilterButtons({ setShowModal }) {
         <Search width={24} height={20} />
       </MobileSearchButton>
     </MobileButtonContainer>
-  );
+  )
 }
 
 export function SearchModal({ checked, onChange }) {
-  const { showModal } = React.useContext(AppContext);
+  const { showModal } = React.useContext(AppContext)
   return showModal ? (
     <Container>
       <CollapsibleGroup>
@@ -87,5 +87,5 @@ export function SearchModal({ checked, onChange }) {
         </Button>
       </CollapsibleGroupModal>
     </Container>
-  ) : null;
+  ) : null
 }
