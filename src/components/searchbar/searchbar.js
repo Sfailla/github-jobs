@@ -1,8 +1,6 @@
 import React from 'react'
 import { Container, Section } from './searchStyles'
 
-// import useWindowSize from '../../hooks/useWindowSize';
-
 export default function Searchbar({ children }) {
   return <Container>{children}</Container>
 }

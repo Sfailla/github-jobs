@@ -1,5 +1,5 @@
 import React from 'react'
-import Searchbar from './searchBar'
+import Searchbar from './searchbar'
 import InputGroup from './components/field'
 import { SearchIcon } from '../../icons'
 
