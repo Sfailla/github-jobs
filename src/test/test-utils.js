@@ -1,20 +1,16 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
-import theme from '../styles/Theme'
+import { theme } from '../styles/theme'
 
-function renderWithTheme(component, options) {
+function renderWithTheme(component, { lightTheme = 'light', ...options } = {}) {
   const Wrapper = ({ children }) => (
-    <ThemeProvider theme={{ theme, mode: 'light' }}>{children}</ThemeProvider>
+    <ThemeProvider theme={theme[lightTheme]}>{children}</ThemeProvider>
   )
 
   return render(component, { wrapper: Wrapper, ...options })
 }
 
-function ThemeWrapper({ children }) {
-  return <ThemeProvider theme={{ theme, mode: 'light' }}>{children}</ThemeProvider>
-}
-
 export * from '@testing-library/react'
 // override React Testing Library
-export { renderWithTheme as render, ThemeWrapper }
+export { renderWithTheme as render }
