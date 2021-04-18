@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { theme } from '../styles/Theme'
+import { theme } from '../styles/theme'
 
 export const AppContext = React.createContext()
 
@@ -16,7 +16,7 @@ export const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={values}>
-      <ThemeProvider theme={{ theme, mode }}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme[mode]}>{children}</ThemeProvider>
     </AppContext.Provider>
   )
 }

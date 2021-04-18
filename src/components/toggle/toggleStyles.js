@@ -1,4 +1,8 @@
 import styled from 'styled-components/macro'
+import { flex } from '../../styles/mixins'
+import { DesignSystem } from '../../styles/shared'
+
+const { colors } = DesignSystem
 
 const TOGGLE_WIDTH = 48
 const TOGGLE_HEIGHT = 24
@@ -9,7 +13,7 @@ const TOGGLE_TRANSLATE = TOGGLE_WIDTH - TOGGLE_CONTROL_SIZE - TOGGLE_GUTTER
 export const Container = styled.div`
   width: 11.2rem;
   height: 2.4rem;
-  ${({ theme: { theme } }) => theme.mixin.flex('space-between', 'center')};
+  ${flex('space-between', 'center')};
 `
 
 export const Switch = styled.div`
@@ -20,7 +24,7 @@ export const Switch = styled.div`
   cursor: pointer;
   user-select: none;
 
-  background-color: ${({ theme: { theme } }) => theme.color.secondary.white};
+  background-color: ${colors.secondary.white};
 `
 
 export const Slider = styled.span`
@@ -29,7 +33,7 @@ export const Slider = styled.span`
   width: ${TOGGLE_CONTROL_SIZE}px;
   height: ${TOGGLE_CONTROL_SIZE}px;
   border-radius: 5rem;
-  background-color: ${({ theme: { theme } }) => theme.color.primary.deepblue};
+  background-color: ${colors.primary.deepblue};
   position: absolute;
   top: ${TOGGLE_GUTTER}px;
   left: ${({ toggle }) => (toggle ? `${TOGGLE_TRANSLATE}px` : `${TOGGLE_GUTTER}px`)};

@@ -1,11 +1,10 @@
 import styled from 'styled-components/macro'
-// import { media } from '../../styles/shared'
 
 export const Container = styled.div`
   width: 100%;
   max-width: 111rem;
   height: 8rem;
-  background: ${({ theme: { theme, mode } }) => theme[mode].background.secondary};
+  background: ${({ theme }) => theme.background.secondary};
   margin: 0 auto;
   position: absolute;
   bottom: 0;
