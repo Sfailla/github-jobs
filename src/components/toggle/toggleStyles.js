@@ -16,6 +16,10 @@ export const Container = styled.div`
   ${flex('space-between', 'center')};
 `
 
+export const Label = styled.label`
+  ${flex()};
+`
+
 export const Switch = styled.div`
   width: ${TOGGLE_WIDTH}px;
   height: ${TOGGLE_HEIGHT}px;
@@ -36,6 +40,6 @@ export const Slider = styled.span`
   background-color: ${colors.primary.deepblue};
   position: absolute;
   top: ${TOGGLE_GUTTER}px;
-  left: ${({ toggle }) => (toggle ? `${TOGGLE_TRANSLATE}px` : `${TOGGLE_GUTTER}px`)};
+  left: ${({ $on }) => ($on ? `${TOGGLE_TRANSLATE}px` : `${TOGGLE_GUTTER}px`)};
   transition: left 0.1s linear;
 `
