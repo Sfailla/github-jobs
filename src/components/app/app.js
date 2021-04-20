@@ -5,12 +5,9 @@ import Page from '../page'
 import JobSearch from '../../pages/JobSearch/jobSearch'
 
 function App() {
-  const [checked, setChecked] = React.useState(false)
-  const handleChange = () => setChecked(checked => !checked)
-
   return (
     <AppContextProvider>
-      <Header {...{ checked, handleChange }} />
+      <Header />
       <Page path="/" component={JobSearch} />
     </AppContextProvider>
   )
