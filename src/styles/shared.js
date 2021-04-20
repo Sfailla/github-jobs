@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 // Layout and global Variables
 export const headerHeight = '16rem'
-export const backgroundColor = '#F4F6F8'
+export const searchbarHeight = '8rem'
 
 export const LayoutWrapper = styled.div`
   width: 100%;

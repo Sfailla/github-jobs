@@ -1,7 +1,7 @@
 export const theme = {
   light: {
     background: {
-      primary: '#F4F6F8',
+      primary: '#ECECEC',
       secondary: '#FFFFFF'
     },
     input: {
