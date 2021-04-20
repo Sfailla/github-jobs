@@ -5,7 +5,7 @@ import { flex } from '../../styles/mixins'
 export const Background = styled.header`
   width: 100%;
   height: ${headerHeight};
-  background: url(${({ src }) => src});
+  background: ${({ $src }) => `url(${$src})`};
   background-repeat: no-repeat;
   background-position: left;
   background-size: cover;

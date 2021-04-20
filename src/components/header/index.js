@@ -3,27 +3,23 @@ import Header from './header'
 import Toggle from '../toggle'
 import { LayoutWrapper } from '../../styles/shared'
 import { Container } from './headerStyles'
-import useWindowSize from '../../hooks/useWindowSize'
-import { responsiveImg } from '../../utils/responsiveImg'
+import { useWindowSize, useResponsiveBgImg } from '../../hooks'
 import Searchbar from '../searchbar'
 
 import { ReactComponent as Logo } from '../../assets/desktop/logo.svg'
-import desktopBG from '../../assets/desktop/bg-pattern-header.svg'
-import tabletBG from '../../assets/tablet/bg-pattern-header.svg'
-import mobileBG from '../../assets/mobile/bg-pattern-header.svg'
 
-export default function HeaderContainer({ onChange, checked, children }) {
+export default function HeaderContainer() {
   const { width } = useWindowSize()
-  const images = [desktopBG, tabletBG, mobileBG]
+  const { src } = useResponsiveBgImg(width)
 
   return (
-    <Header src={responsiveImg(width, images)}>
+    <Header $src={src}>
       <LayoutWrapper>
         <Container>
           <Logo width={115} height={32} alt="logo" />
           <Toggle />
         </Container>
-        <Searchbar {...{ onChange, checked }} />
+        <Searchbar />
       </LayoutWrapper>
     </Header>
   )
