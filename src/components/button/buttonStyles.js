@@ -1,7 +1,7 @@
-import styled from 'styled-components/macro';
-import { media } from '../../styles/shared';
+import styled from 'styled-components/macro'
+import { media } from '../../styles/shared'
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   width: 100%;
   max-width: 14.1rem;
   height: 4.8rem;
@@ -13,26 +13,26 @@ export const Button = styled.button`
   font-weight: bold;
   color: white;
   transition: 0.2s ease-in-out;
-  background-color: ${({ theme: { theme } }) => theme.color.button.normal};
+  background-color: ${({ theme }) => theme.color.button.normal};
   ${({ fullWidth }) => fullWidth && `max-width: 100%`};
 
   &:hover {
-    background-color: ${({ theme: { theme } }) => theme.color.button.hover};
+    background-color: ${({ theme }) => theme.color.button.hover};
   }
-`;
+`
 
-export const SearchbarButton = styled(Button)`
+export const SearchbarButton = styled(StyledButton)`
   max-width: 12.3rem;
   margin-right: 1.6rem;
   margin-left: 1rem;
 
   ${media.tablet_lg`width: 8rem;`}
-`;
+`
 
-export const MobileSearchButton = styled(Button)`
+export const MobileSearchButton = styled(StyledButton)`
   width: 4.8rem;
-  ${({ theme: { theme } }) => theme.mixin.flex()};
-`;
+  ${({ theme }) => theme.mixin.flex()};
+`
 
 export const IconButton = styled.button`
   width: 48px;
@@ -42,4 +42,4 @@ export const IconButton = styled.button`
   background: transparent;
   cursor: pointer;
   z-index: 10;
-`;
+`

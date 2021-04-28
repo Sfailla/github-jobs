@@ -1,8 +1,12 @@
 import {
-  Button,
+  StyledButton,
   SearchbarButton,
   MobileSearchButton,
-  IconButton,
-} from './buttonStyles';
+  IconButton
+} from './buttonStyles'
 
-export { Button, SearchbarButton, MobileSearchButton, IconButton };
+export function Button({ children, ...props }) {
+  return <StyledButton {...props}>{children}</StyledButton>
+}
+
+export { SearchbarButton, MobileSearchButton, IconButton }
