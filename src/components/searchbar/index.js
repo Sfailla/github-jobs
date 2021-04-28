@@ -1,20 +1,43 @@
 import React from 'react'
 import Searchbar from './searchbar'
-import InputGroup from './components/field'
-import { SearchIcon } from '../../icons'
+import InputGroup from './components/field/field'
+import { SearchIcon, LocationIcon } from '../../icons'
+import { Wrapper, SvgWrapper } from './components/field/fieldStyles'
 
 const SearchbarContainer = () => {
   return (
     <Searchbar>
       <Searchbar.Section>
         <InputGroup>
-          <SearchIcon />
-          <InputGroup.Label>Filter by title, companies, expertise…</InputGroup.Label>
-          <InputGroup.Input />
+          <Wrapper>
+            <SearchIcon />
+            <InputGroup.Label>Filter by title, companies, expertise…</InputGroup.Label>
+          </Wrapper>
+          <InputGroup.Input placeholder=" " />
         </InputGroup>
       </Searchbar.Section>
-      <Searchbar.Section>This is section 2</Searchbar.Section>
-      <Searchbar.Section>This is section 3</Searchbar.Section>
+
+      <Searchbar.Section>
+        <InputGroup>
+          <Wrapper>
+            <SvgWrapper>
+              <LocationIcon />
+            </SvgWrapper>
+            <InputGroup.Label>Filter by location..</InputGroup.Label>
+          </Wrapper>
+          <InputGroup.Input placeholder=" " />
+        </InputGroup>
+      </Searchbar.Section>
+
+      <Searchbar.Section>
+        <InputGroup>
+          <Wrapper>
+            <InputGroup.Checkbox defaultChecked />
+            <InputGroup.Label bold>Find a job</InputGroup.Label>
+            <button>Click Me</button>
+          </Wrapper>
+        </InputGroup>
+      </Searchbar.Section>
     </Searchbar>
   )
 }
