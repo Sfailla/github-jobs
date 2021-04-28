@@ -43,11 +43,8 @@ export const DesignSystem = {
 
 // Set Breakpoints for Responsive Layout
 export const SCREEN_SIZES = {
-  mobile_sm: 375,
   mobile: 550,
-  tablet_sm: 700,
   tablet: 768,
-  tablet_lg: 992,
   desktop: 1440
 }
 
