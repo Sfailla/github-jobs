@@ -11,13 +11,11 @@ export default function useResponsiveBgImg(width) {
   const isTabletWidth = width >= 375 && width < 768
   const isDesktopWidth = width >= 768
 
-  const setResponsiveSrc = React.useMemo(() => {
+  React.useEffect(() => {
     if (isDesktopWidth) setSrc(desktopBG)
     if (isTabletWidth) setSrc(tabletBG)
     if (isMobileWidth) setSrc(mobileBG)
-  }, [isDesktopWidth, isTabletWidth, isMobileWidth])
-
-  React.useEffect(() => setResponsiveSrc, [setResponsiveSrc])
+  }, [isDesktopWidth, isTabletWidth, isMobileWidth, src])
 
   return { src }
 }
