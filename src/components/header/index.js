@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './header'
 import Toggle from '../toggle'
 import { LayoutWrapper } from '../../styles/shared'
-import { Container } from './headerStyles'
+import { HeaderContent } from './headerStyles'
 import { useWindowSize, useResponsiveBgImg } from '../../hooks'
 import Searchbar from '../searchbar'
 
@@ -15,10 +15,10 @@ export default function HeaderContainer() {
   return (
     <Header $src={src}>
       <LayoutWrapper>
-        <Container>
+        <HeaderContent>
           <Logo width={115} height={32} alt="logo" />
           <Toggle />
-        </Container>
+        </HeaderContent>
         <Searchbar />
       </LayoutWrapper>
     </Header>

@@ -15,7 +15,7 @@ export const Background = styled.header`
   ${media.mobile`height: 13.2rem; padding: 0 2.4rem;`};
 `
 
-export const Container = styled.div`
+export const HeaderContent = styled.div`
   width: 100%;
   height: auto;
   padding-top: 4.4rem;
