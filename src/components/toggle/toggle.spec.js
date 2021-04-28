@@ -1,13 +1,10 @@
 import React from 'react'
-import { AppContextProvider } from '../../contexts'
 import { screen, fireEvent, render } from '../../test/test-utils'
 import Toggle from '../toggle/toggle'
 
 describe('<Toggle /> component tests', () => {
   it('renders the <Toggle /> component', () => {
-    const Wrapper = ({ children }) => <AppContextProvider>{children}</AppContextProvider>
-
-    render(<Toggle />, { wrapper: Wrapper })
+    render(<Toggle />)
   })
 })
 
