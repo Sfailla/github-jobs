@@ -1,42 +1,54 @@
 import React from 'react'
 import Searchbar from './searchbar'
-import InputGroup from './components/field/field'
 import { SearchIcon, LocationIcon } from '../../icons'
-import { Wrapper, SvgWrapper } from './components/field/fieldStyles'
+import { Wrapper, SvgWrapper } from './searchStyles'
+import { SearchbarButton as Button } from '../button'
+import { useWindowSize } from '../../hooks'
 
 const SearchbarContainer = () => {
+  const [checked, setChecked] = React.useState(false)
+  const handleCheck = () => setChecked(checked => !checked)
+  const { width } = useWindowSize()
+  const shortenText = width < 992
+
   return (
     <Searchbar>
       <Searchbar.Section>
-        <InputGroup>
+        <Searchbar.InputGroup>
+          <Searchbar.Input placeholder=" " />
           <Wrapper>
             <SearchIcon />
-            <InputGroup.Label>Filter by title, companies, expertise…</InputGroup.Label>
+            <Searchbar.Label>
+              {shortenText
+                ? 'Filter by title...'
+                : 'Filter by title, companies, expertise...'}
+            </Searchbar.Label>
           </Wrapper>
-          <InputGroup.Input placeholder=" " />
-        </InputGroup>
+        </Searchbar.InputGroup>
       </Searchbar.Section>
 
       <Searchbar.Section>
-        <InputGroup>
+        <Searchbar.InputGroup>
+          <Searchbar.Input placeholder=" " />
           <Wrapper>
             <SvgWrapper>
               <LocationIcon />
             </SvgWrapper>
-            <InputGroup.Label>Filter by location..</InputGroup.Label>
+            <Searchbar.Label>Filter by location...</Searchbar.Label>
           </Wrapper>
-          <InputGroup.Input placeholder=" " />
-        </InputGroup>
+        </Searchbar.InputGroup>
       </Searchbar.Section>
 
       <Searchbar.Section>
-        <InputGroup>
+        <Searchbar.InputGroup>
           <Wrapper>
-            <InputGroup.Checkbox defaultChecked />
-            <InputGroup.Label bold>Find a job</InputGroup.Label>
-            <button>Click Me</button>
+            <Searchbar.Checkbox onChange={handleCheck} checked={checked} />
+            <Searchbar.Label style={{ marginRight: 'auto' }} bold>
+              Find a job
+            </Searchbar.Label>
+            <Button>Click Me</Button>
           </Wrapper>
-        </InputGroup>
+        </Searchbar.InputGroup>
       </Searchbar.Section>
     </Searchbar>
   )
