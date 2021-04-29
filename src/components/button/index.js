@@ -1,1 +1,1 @@
-export { StyledButton, SearchbarButton } from './buttonStyles'
+export { StyledButton, SearchbarButton } from './style'

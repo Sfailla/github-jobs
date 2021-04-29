@@ -13,6 +13,7 @@ export const StyledButton = styled.button`
   font-size: 1.6rem;
   font-weight: bold;
   color: white;
+  letter-spacing: 0.5px;
   pointer-events: auto;
   transition: 0.2s ease-in-out;
   background-color: ${color.button.normal};

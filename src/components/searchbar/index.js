@@ -1,57 +1,40 @@
 import React from 'react'
-import Searchbar from './searchbar'
-import { SearchIcon, LocationIcon } from '../../icons'
-import { Wrapper, SvgWrapper } from './searchStyles'
-import { SearchbarButton as Button } from '../button'
-import { useWindowSize } from '../../hooks'
+import {
+  Container,
+  InputContainer,
+  Label,
+  BoldLabel,
+  Input,
+  Checkbox
+} from './desktop/style'
 
-const SearchbarContainer = () => {
-  const [checked, setChecked] = React.useState(false)
-  const handleCheck = () => setChecked(checked => !checked)
-  const { width } = useWindowSize()
-  const shortenText = width < 992
-
-  return (
-    <Searchbar>
-      <Searchbar.Section>
-        <Searchbar.InputGroup>
-          <Searchbar.Input placeholder=" " />
-          <Wrapper>
-            <SearchIcon />
-            <Searchbar.Label>
-              {shortenText
-                ? 'Filter by title...'
-                : 'Filter by title, companies, expertise...'}
-            </Searchbar.Label>
-          </Wrapper>
-        </Searchbar.InputGroup>
-      </Searchbar.Section>
-
-      <Searchbar.Section>
-        <Searchbar.InputGroup>
-          <Searchbar.Input placeholder=" " />
-          <Wrapper>
-            <SvgWrapper>
-              <LocationIcon />
-            </SvgWrapper>
-            <Searchbar.Label>Filter by location...</Searchbar.Label>
-          </Wrapper>
-        </Searchbar.InputGroup>
-      </Searchbar.Section>
-
-      <Searchbar.Section>
-        <Searchbar.InputGroup>
-          <Wrapper>
-            <Searchbar.Checkbox onChange={handleCheck} checked={checked} />
-            <Searchbar.Label style={{ marginRight: 'auto' }} bold>
-              Find a job
-            </Searchbar.Label>
-            <Button>Click Me</Button>
-          </Wrapper>
-        </Searchbar.InputGroup>
-      </Searchbar.Section>
-    </Searchbar>
-  )
+export default function Searchbar({ children }) {
+  return <Container>{children}</Container>
 }
 
-export default SearchbarContainer
+function SearchbarSection({ children, ...props }) {
+  return <React.Fragment {...props}>{children}</React.Fragment>
+}
+
+function SearchbarInputGroup({ children }) {
+  return <InputContainer>{children}</InputContainer>
+}
+
+function SearchLabel({ bold = false, children, ...props }) {
+  let Component = bold ? BoldLabel : Label
+  return <Component {...props}>{children}</Component>
+}
+
+function SearchInput({ ...props }) {
+  return <Input {...props} />
+}
+
+function SearchCheckbox({ ...props }) {
+  return <Checkbox type="checkbox" {...props} />
+}
+
+Searchbar.Section = SearchbarSection
+Searchbar.InputGroup = SearchbarInputGroup
+Searchbar.Label = SearchLabel
+Searchbar.Input = SearchInput
+Searchbar.Checkbox = SearchCheckbox

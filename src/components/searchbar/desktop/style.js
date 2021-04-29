@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
-import { searchbarHeight } from '../../styles/shared'
-import { flex } from '../../styles/mixins'
+import { searchbarHeight, media } from '../../../styles/shared'
+import { flex } from '../../../styles/mixins'
 
 export const Container = styled.div`
   width: 100%;
@@ -32,6 +32,8 @@ export const InputContainer = styled.div`
     left: 3.2rem;
     transform: translateY(-50%);
   }
+
+  ${media.lg`padding: 0 1.6rem 0 2.4rem;`};
 `
 export const Wrapper = styled.div`
   width: 100%;
@@ -75,12 +77,15 @@ export const Input = styled.input`
   user-select: none;
   background-color: inherit;
   padding-left: 7.3rem;
+  padding-right: 1rem;
   font-size: 1.6rem;
-  color: ${({ theme }) => theme.input.name};
+  color: ${({ theme }) => theme.input.text};
 
   &:not(:placeholder-shown) + ${Wrapper} ${Label} {
     visibility: hidden;
   }
+
+  ${media.lg`padding-left: 6.4rem;`};
 `
 
 export const Checkbox = styled.input`
