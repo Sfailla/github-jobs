@@ -1,6 +1,11 @@
-import { render } from '../../test/test-utils'
-import App from './App'
+import ReactDOM from 'react-dom';
 
-test('renders <App /> component', () => {
-  render(<App />)
-})
+test('renders the app', () => {
+  const root = document.createElement('div');
+  root.id = 'root';
+  document.body.append(root);
+
+  // cleanup
+  ReactDOM.unmountComponentAtNode(root);
+  document.body.removeChild(root);
+});
