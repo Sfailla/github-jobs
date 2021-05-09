@@ -5,7 +5,7 @@ import { Wrapper, SvgWrapper } from './style'
 import { SearchbarButton as Button } from '../../button'
 import { useWindowSize } from '../../../hooks'
 
-const SearchbarContainer = () => {
+export default function SearchbarContainer() {
   const [checked, setChecked] = React.useState(false)
   const handleCheck = () => setChecked(checked => !checked)
   const { width } = useWindowSize()
@@ -43,15 +43,11 @@ const SearchbarContainer = () => {
         <Searchbar.InputGroup>
           <Wrapper>
             <Searchbar.Checkbox onChange={handleCheck} checked={checked} />
-            <Searchbar.Label style={{ marginRight: 'auto' }} bold>
-              Find a job
-            </Searchbar.Label>
-            <Button>Search</Button>
+            <Searchbar.Label bold>Full time only</Searchbar.Label>
+            <Button style={{ marginLeft: '1rem' }}>Search</Button>
           </Wrapper>
         </Searchbar.InputGroup>
       </Searchbar.Section>
     </Searchbar>
   )
 }
-
-export default SearchbarContainer

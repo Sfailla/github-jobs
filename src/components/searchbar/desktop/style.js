@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro'
-import { searchbarHeight, media } from '../../../styles/shared'
+import { searchbarHeight, media, DesignSystem } from '../../../styles/shared'
 import { flex } from '../../../styles/mixins'
+
+const { shadow } = DesignSystem
 
 export const Container = styled.div`
   width: 100%;
@@ -12,6 +14,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto) min-content;
   grid-template-rows: 8rem;
+  box-shadow: ${shadow.small};
 
   & > div:not(:last-child) {
     border-right: 1px solid rgba(110, 128, 152, 0.2);
@@ -61,6 +64,7 @@ export const Label = styled.label`
 
 export const BoldLabel = styled(Label)`
   font-weight: bold;
+  font-size: 1.5rem;
   opacity: unset;
 `
 
