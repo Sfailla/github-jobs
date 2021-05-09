@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import { renderHook } from '@testing-library/react-hooks'
 import { AppContextProvider } from '../contexts'
 
 function renderWithTheme(component, { ...options } = {}) {
@@ -9,5 +10,6 @@ function renderWithTheme(component, { ...options } = {}) {
 }
 
 export * from '@testing-library/react'
+
 // override React Testing Library
-export { renderWithTheme as render }
+export { renderWithTheme as render, renderHook }
