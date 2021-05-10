@@ -2,18 +2,18 @@ import React from 'react'
 import { screen, fireEvent, render } from '../../test/test-utils'
 import Toggle from '../toggle/toggle'
 
-describe('<Toggle /> component tests', () => {
+describe('Toggle component tests', () => {
   it('renders the <Toggle /> component', () => {
     render(<Toggle />)
   })
 })
 
-describe('<Toggle.Switch /> component tests', () => {
+describe('Toggle.Switch component tests', () => {
   it('renders the <Toggle.Switch /> component', () => {
     render(<Toggle.Switch />)
   })
 
-  it('toggles correctly', () => {
+  it('toggles correctly when click event occurs', () => {
     const handleToggle = jest.fn()
     render(<Toggle.Switch toggle={handleToggle} />)
 

@@ -1,45 +1,40 @@
 import React from 'react'
-import Searchbar from './searchbar'
-import InputGroup from './components/field/field'
-import { SearchIcon, LocationIcon } from '../../icons'
-import { Wrapper, SvgWrapper } from './components/field/fieldStyles'
+import {
+  Container,
+  InputContainer,
+  Label,
+  BoldLabel,
+  Input,
+  Checkbox
+} from './desktop/style'
 
-const SearchbarContainer = () => {
-  return (
-    <Searchbar>
-      <Searchbar.Section>
-        <InputGroup>
-          <Wrapper>
-            <SearchIcon />
-            <InputGroup.Label>Filter by title, companies, expertise…</InputGroup.Label>
-          </Wrapper>
-          <InputGroup.Input placeholder=" " />
-        </InputGroup>
-      </Searchbar.Section>
-
-      <Searchbar.Section>
-        <InputGroup>
-          <Wrapper>
-            <SvgWrapper>
-              <LocationIcon />
-            </SvgWrapper>
-            <InputGroup.Label>Filter by location..</InputGroup.Label>
-          </Wrapper>
-          <InputGroup.Input placeholder=" " />
-        </InputGroup>
-      </Searchbar.Section>
-
-      <Searchbar.Section>
-        <InputGroup>
-          <Wrapper>
-            <InputGroup.Checkbox defaultChecked />
-            <InputGroup.Label bold>Find a job</InputGroup.Label>
-            <button>Click Me</button>
-          </Wrapper>
-        </InputGroup>
-      </Searchbar.Section>
-    </Searchbar>
-  )
+export default function Searchbar({ children }) {
+  return <Container>{children}</Container>
 }
 
-export default SearchbarContainer
+function SearchbarSection({ children, ...props }) {
+  return <React.Fragment {...props}>{children}</React.Fragment>
+}
+
+function SearchbarInputGroup({ children }) {
+  return <InputContainer>{children}</InputContainer>
+}
+
+function SearchLabel({ bold = false, children, ...props }) {
+  let Component = bold ? BoldLabel : Label
+  return <Component {...props}>{children}</Component>
+}
+
+function SearchInput({ ...props }) {
+  return <Input {...props} />
+}
+
+function SearchCheckbox({ ...props }) {
+  return <Checkbox type="checkbox" {...props} />
+}
+
+Searchbar.Section = SearchbarSection
+Searchbar.InputGroup = SearchbarInputGroup
+Searchbar.Label = SearchLabel
+Searchbar.Input = SearchInput
+Searchbar.Checkbox = SearchCheckbox

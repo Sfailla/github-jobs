@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppContext } from '../../contexts'
-import { Container, Switch, Slider, Label } from './toggleStyles'
+import { Container, Switch, Slider, Label } from './style'
 
 export const ToggleContext = React.createContext()
 

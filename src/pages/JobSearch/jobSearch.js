@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from './jobSearchStyles'
+import { Container } from './style'
 
 export default function JobSearch() {
   return (

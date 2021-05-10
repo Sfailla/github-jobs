@@ -14,7 +14,7 @@ export const LayoutWrapper = styled.div`
 
 // Design System for Project
 export const DesignSystem = {
-  colors: {
+  color: {
     primary: {
       violet: '#9E7F66',
       lightviolet: '#939Bf4',
@@ -42,16 +42,20 @@ export const DesignSystem = {
 }
 
 // Set Breakpoints for Responsive Layout
-export const SCREEN_SIZES = {
-  mobile: 550,
-  tablet: 768,
-  desktop: 1440
+export const Breakpoints = {
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400
 }
 
-export const media = Object.keys(SCREEN_SIZES).reduce((accumulator, label) => {
-  const emSize = SCREEN_SIZES[label] / 16
+export const media = Object.keys(Breakpoints).reduce((accumulator, label) => {
+  const mediaSize = Breakpoints[label]
+
   accumulator[label] = (...args) => css`
-    @media (max-width: ${emSize}em) {
+    @media all and (max-width: ${mediaSize}px) {
       ${css(...args)};
     }
   `

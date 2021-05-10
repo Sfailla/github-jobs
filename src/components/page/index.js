@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from './pageStyles'
+import { Container } from './style'
 
 function Page({ path, component: Component, ...restProps }) {
   return window.location.pathname === path ? (

@@ -11,6 +11,9 @@ export const theme = {
     button: {
       normal: 'rgba(89, 100, 224, .10)',
       hover: 'rgba(89, 100, 224, .35)'
+    },
+    text: {
+      normal: '#19202D'
     }
   },
   dark: {
@@ -25,6 +28,9 @@ export const theme = {
     button: {
       normal: 'rgba(255, 255, 255, .10)',
       hover: 'rgba(255, 255, 255, .35)'
+    },
+    text: {
+      normal: '#FFFFFF'
     }
   }
 }
