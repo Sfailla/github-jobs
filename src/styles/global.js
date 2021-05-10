@@ -14,8 +14,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    width: 100%;
-    height: 100vh;
     margin: 0;
     font-size: 1.6rem;
     line-height: 2rem;
@@ -25,11 +23,10 @@ export const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale; 
     transition: background .5s linear;
     position: relative;
-
-    // #root
-    & > div {
-      width: 100%;
-      height: 100%;
-    }
   }
+
+  html, body { width: 100%; height: 100%; };
+  
+  body > div { width: 100%; min-height: 100%; }
+
 `

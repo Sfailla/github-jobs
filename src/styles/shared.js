@@ -33,6 +33,9 @@ export const DesignSystem = {
       hover: '#939BF4'
     }
   },
+  shadow: {
+    small: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
+  },
   typography: {
     h1: '28px',
     h2: '24px',

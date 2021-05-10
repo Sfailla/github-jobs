@@ -16,22 +16,25 @@ const useFetchData = (query, options = {}) => {
       if (cache.current[query]) {
         setResults(cache.current[query])
         setLoading(false)
-      } else {
-        try {
-          const response = await fetch(`${BASE_URL}${query}`, { ...options })
-          const data = await response.json()
-          cache.current[query] = data
-          setResults(data)
-        } catch (error) {
-          setError(error)
-        } finally {
-          setLoading(false)
-        }
       }
+
+      try {
+        const response = await fetch(`${BASE_URL}${query}`, { ...options })
+        const data = await response.json()
+        cache.current[query] = data
+        setLoading(false)
+        setResults(data)
+      } catch (error) {
+        setLoading(false)
+        setError(error)
+      }
+      // finally {
+      //   setLoading(false)
+      // }
     }
 
     getApiData()
-  }, [setResults, setError, setLoading, options, query])
+  }, [results, error, loading, options, query])
 
   return { results, loading, error }
 }

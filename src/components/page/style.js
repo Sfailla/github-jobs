@@ -3,8 +3,10 @@ import { headerHeight } from '../../styles/shared'
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100% - ${headerHeight});
-  padding-top: 7rem;
+  /* height: calc(100vh - ${headerHeight}); */
+  padding-top: 12rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
 
   background: ${({ theme }) => theme.background.primary};
 `

@@ -16,6 +16,8 @@ const stubbedJobs = [
   }
 ]
 
+const fetchUrl = 'https://jobs.github.com/positions.json'
+
 afterEach(() => global.fetch.mockClear())
 afterAll(() => global.fetch.mockRestore())
 
@@ -28,48 +30,36 @@ describe('custom useFetchData hook', () => {
       })
     )
 
-    const successFetchUrl = 'https://jobs.github.com/positions.json'
-
     // execute fetch request
-    const { result, waitForNextUpdate } = renderHook(
-      () => useFetchData(successFetchUrl),
-      []
-    )
+    const { result, waitForNextUpdate } = renderHook(() => useFetchData(fetchUrl), [])
 
-    await waitForNextUpdate()
+    await waitForNextUpdate({ timeout: 6000 })
 
     // ** need to figure out why the url is called twice?? **
-    // expect(global.fetch).toHaveBeenCalledWith(stubbedFetchUrl)
+    // expect(global.fetch).toHaveBeenCalledWith(successFetchUrl)
 
     expect(result.current).toStrictEqual({
       results: stubbedJobs,
       loading: false,
       error: {}
     })
+
+    expect(global.fetch).toHaveBeenCalledWith(fetchUrl)
   })
 
-  // it('should respond with error', async () => {
-  //   jest.spyOn(global, 'fetch').mockImplementation(() =>
-  //     Promise.reject({
-  //       error: () => 'error fetching url'
-  //     })
-  //   )
+  it('should respond with error', async () => {
+    jest
+      .spyOn(global, 'fetch')
+      .mockImplementationOnce(() => Promise.reject('error fetching url'))
 
-  //   const errorFetchUrl = 'https://jobs.github.com/positions.json-error'
+    const { result, waitForNextUpdate } = renderHook(() => useFetchData(null), [])
 
-  //   const { result, waitForNextUpdate } = renderHook(
-  //     () => useFetchData(errorFetchUrl),
-  //     []
-  //   )
+    await waitForNextUpdate({ timeout: 6000 })
 
-  //   await waitForNextUpdate()
-
-  //   console.log(result.current)
-
-  //   expect(result.current).toStrictEqual({
-  //     results: [],
-  //     loading: false,
-  //     error: 'error fetching url'
-  //   })
-  // })
+    expect(result.current).toStrictEqual({
+      results: {},
+      loading: true,
+      error: 'error fetching url'
+    })
+  })
 })
