@@ -1,5 +1,7 @@
 # Frontend Mentor - GitHub Jobs API
 
+adding small change
+
 ![Design preview for the GitHub Jobs API coding challenge](./preview.jpg)
 
 ## Welcome! 👋
