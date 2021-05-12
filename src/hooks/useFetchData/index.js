@@ -1,8 +1,8 @@
 import React from 'react'
 // const CORS_PROXY = 'https://proxy.hoppscotch.io/'
 // const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
-const CORS_PROXY = 'https://cors.bridged.cc/'
-const BASE_URL = `${CORS_PROXY}https://jobs.github.com/positions.json`
+// const CORS_PROXY = 'https://cors.bridged.cc/'
+// const BASE_URL = `${CORS_PROXY}https://jobs.github.com/positions.json`
 
 const useFetchData = (query, options = {}) => {
   const [results, setResults] = React.useState({})
@@ -11,7 +11,7 @@ const useFetchData = (query, options = {}) => {
   const cache = React.useRef({})
 
   React.useEffect(() => {
-    const getApiData = async () => {
+    async function getApiData() {
       setLoading(true)
       if (cache.current[query]) {
         setResults(cache.current[query])
@@ -19,18 +19,15 @@ const useFetchData = (query, options = {}) => {
       }
 
       try {
-        const response = await fetch(`${BASE_URL}${query}`, { ...options })
+        const response = await fetch(query, { ...options })
         const data = await response.json()
         cache.current[query] = data
-        setLoading(false)
         setResults(data)
       } catch (error) {
-        setLoading(false)
         setError(error)
+      } finally {
+        setLoading(false)
       }
-      // finally {
-      //   setLoading(false)
-      // }
     }
 
     getApiData()
