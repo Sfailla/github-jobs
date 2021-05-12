@@ -4,7 +4,7 @@
 
 this project is being built with
 
-🛠️⚛️🔥
+🛠️ ⚛️ 🔥
 
 - React
 - Styled-Components
