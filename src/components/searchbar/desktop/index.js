@@ -7,9 +7,10 @@ import { useWindowSize } from '../../../hooks'
 
 export default function SearchbarContainer() {
   const [checked, setChecked] = React.useState(false)
-  const handleCheck = () => setChecked(checked => !checked)
   const { width } = useWindowSize()
   const isSmallScreen = width < 992
+
+  const handleCheck = () => setChecked(checked => !checked)
 
   return (
     <Searchbar>
