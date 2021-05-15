@@ -10,6 +10,7 @@ export const StyledInfoCard = styled(StyledCard)`
   height: 22.8rem;
   padding: 5.4rem 3.2rem 3.2rem 3.2rem;
   ${flex('space-between', 'flex-start', 'column')};
+  position: relative;
 
   ${media.lg`
     width: 100%; 
@@ -38,4 +39,15 @@ export const Span = styled.span`
   font-size: 1.4rem;
   font-weight: bold;
   color: ${color.primary.deepblue};
+`
+
+export const Logo = styled.img`
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  border-radius: 1.5rem;
+  position: absolute;
+  top: -2.5rem;
+  left: 3.2rem;
+  background-color: ${({ color }) => color};
 `
