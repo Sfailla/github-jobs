@@ -1,39 +1,36 @@
 import React from 'react'
-// const CORS_PROXY = 'https://proxy.hoppscotch.io/'
-// const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
-// const CORS_PROXY = 'https://cors.bridged.cc/'
-// const BASE_URL = `${CORS_PROXY}https://jobs.github.com/positions.json`
 
-const useFetchData = (query, options = {}) => {
+const useFetchData = query => {
   const [results, setResults] = React.useState({})
-  const [loading, setLoading] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false)
   const [error, setError] = React.useState({})
   const cache = React.useRef({})
 
   React.useEffect(() => {
     async function getApiData() {
-      setLoading(true)
+      setIsLoading(true)
       if (cache.current[query]) {
         setResults(cache.current[query])
-        setLoading(false)
-      }
-
-      try {
-        const response = await fetch(query, { ...options })
-        const data = await response.json()
-        cache.current[query] = data
-        setResults(data)
-      } catch (error) {
-        setError(error)
-      } finally {
-        setLoading(false)
+        setIsLoading(false)
+      } else {
+        try {
+          const response = await fetch(query)
+          const data = await response.json()
+          cache.current[query] = data
+          setResults(data)
+        } catch (error) {
+          setError(error)
+        } finally {
+          setIsLoading(false)
+        }
       }
     }
 
     getApiData()
-  }, [results, error, loading, options, query])
+    // eslint-disable-next-line
+  }, [query])
 
-  return { results, loading, error }
+  return { results, isLoading, error }
 }
 
 export default useFetchData

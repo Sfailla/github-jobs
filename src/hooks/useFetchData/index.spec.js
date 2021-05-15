@@ -24,44 +24,45 @@ afterAll(() => global.fetch.mockRestore())
 describe('custom useFetchData hook', () => {
   it('should return data after fetch', async () => {
     // mock the api call
-    jest.spyOn(global, 'fetch').mockImplementationOnce(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(stubbedJobs)
-      })
+    jest.spyOn(global, 'fetch').mockImplementation(
+      async () =>
+        await Promise.resolve({
+          json: async () => await Promise.resolve(stubbedJobs)
+        })
     )
 
     // execute fetch request
-    const { result, waitForNextUpdate } = renderHook(() => useFetchData(fetchUrl), [])
+    const { result, waitForNextUpdate } = renderHook(() => useFetchData(fetchUrl))
+
+    expect(result.current.isLoading).toBe(true)
 
     await waitForNextUpdate({ timeout: 6000 })
 
-    console.log(global.fetch.mock)
-
-    // ** need to figure out why the url is called twice?? **
-    // expect(global.fetch).toHaveBeenCalledWith(successFetchUrl)
-
+    expect(global.fetch).toHaveBeenCalledWith(fetchUrl)
+    expect(global.fetch).toHaveBeenCalledTimes(1)
     expect(result.current).toStrictEqual({
       results: stubbedJobs,
-      loading: false,
+      isLoading: false,
       error: {}
     })
-
-    // expect(global.fetch).toHaveBeenCalledWith(fetchUrl)
   })
 
-  // it('should respond with error', async () => {
-  //   jest
-  //     .spyOn(global, 'fetch')
-  //     .mockRejectedValue(() => Promise.reject('error fetching url'))
+  it('should respond with error', async () => {
+    // mock api call
+    jest
+      .spyOn(global, 'fetch')
+      .mockImplementation(async () => await Promise.reject('error fetching url'))
 
-  //   const { result, waitForNextUpdate } = renderHook(() => useFetchData(null), [])
+    const { result, waitForNextUpdate } = renderHook(() => useFetchData(fetchUrl))
 
-  //   await waitForNextUpdate({ timeout: 6000 })
+    expect(result.current.isLoading).toBe(true)
 
-  //   expect(result.current).toStrictEqual({
-  //     results: {},
-  //     loading: true,
-  //     error: 'error fetching url'
-  //   })
-  // })
+    await waitForNextUpdate({ timeout: 6000 })
+
+    expect(result.current).toStrictEqual({
+      results: {},
+      isLoading: false,
+      error: 'error fetching url'
+    })
+  })
 })
