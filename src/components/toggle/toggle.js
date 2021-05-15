@@ -21,16 +21,6 @@ function Toggle({ children }) {
   )
 }
 
-function On({ children }) {
-  const { on } = React.useContext(ToggleContext)
-  return on ? children : null
-}
-
-function Off({ children }) {
-  const { on } = React.useContext(ToggleContext)
-  return on ? null : children
-}
-
 function ToggleLabel({ children }) {
   const { on } = React.useContext(ToggleContext)
   return <Label>{children({ on })}</Label>
@@ -49,8 +39,6 @@ function Button({ ...props }) {
   return <Toggle.Switch {...{ on, toggle }} {...props} />
 }
 
-Toggle.On = On
-Toggle.Off = Off
 Toggle.Label = ToggleLabel
 Toggle.Button = Button
 Toggle.Switch = ToggleSwitch
