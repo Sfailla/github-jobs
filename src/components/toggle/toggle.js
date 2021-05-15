@@ -4,7 +4,7 @@ import { Container, Switch, Slider, Label } from './style'
 
 export const ToggleContext = React.createContext()
 
-export default function Toggle({ children }) {
+function Toggle({ children }) {
   const [on, setOn] = React.useState(false)
   const { setMode } = React.useContext(AppContext)
 
@@ -54,3 +54,5 @@ Toggle.Off = Off
 Toggle.Label = ToggleLabel
 Toggle.Button = Button
 Toggle.Switch = ToggleSwitch
+
+export default Toggle

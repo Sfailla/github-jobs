@@ -1,6 +1,6 @@
 import React from 'react'
 import Toggle from './toggle'
-import { SunIcon, MoonIcon } from '../../icons'
+import { SunIcon, MoonIcon } from '../../assets/icons'
 
 export default function ToggleContainer() {
   return (
