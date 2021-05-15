@@ -1,6 +1,6 @@
 import React from 'react'
 import Searchbar from '..'
-import { SearchIcon, LocationIcon } from '../../../icons'
+import { SearchIcon, LocationIcon } from '../../../assets/icons'
 import { Wrapper, SvgWrapper } from './style'
 import { SearchbarButton as Button } from '../../button'
 import { useWindowSize } from '../../../hooks'
@@ -9,7 +9,7 @@ export default function SearchbarContainer() {
   const [checked, setChecked] = React.useState(false)
   const handleCheck = () => setChecked(checked => !checked)
   const { width } = useWindowSize()
-  const shortenText = width < 992
+  const isSmallScreen = width < 992
 
   return (
     <Searchbar>
@@ -19,7 +19,7 @@ export default function SearchbarContainer() {
           <Wrapper>
             <SearchIcon />
             <Searchbar.Label>
-              {shortenText
+              {isSmallScreen
                 ? 'Filter by title...'
                 : 'Filter by title, companies, expertise...'}
             </Searchbar.Label>
