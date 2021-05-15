@@ -5,14 +5,9 @@ import { theme } from '../styles/theme.js'
 export const AppContext = React.createContext()
 
 export const AppContextProvider = ({ children }) => {
-  const [showModal, setShowModal] = React.useState(false)
   const [mode, setMode] = React.useState('light')
 
-  const values = {
-    showModal,
-    setShowModal,
-    setMode
-  }
+  const values = { setMode }
 
   return (
     <AppContext.Provider value={values}>
