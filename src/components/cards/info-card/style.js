@@ -8,8 +8,6 @@ const { color } = DesignSystem
 export const StyledInfoCard = styled(StyledCard)`
   max-width: 35rem;
   height: 22.8rem;
-  padding: 5.4rem 3.2rem 3.2rem 3.2rem;
-  ${flex('space-between', 'flex-start', 'column')};
   position: relative;
 
   ${media.lg`

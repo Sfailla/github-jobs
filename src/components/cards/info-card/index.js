@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyledInfoCard, Title, Label, Span, Logo } from './style'
+import { CardInfoButton } from '../../buttons'
 import defaultLogo from '../../../assets/company-logo.svg'
 import {
   formatTime,
@@ -13,14 +14,16 @@ export default function InfoCard({ data }) {
 
   return (
     <StyledInfoCard>
-      <InfoCard.Logo
-        color={randomColor()}
-        src={`${handleNullLogo(company_logo, defaultLogo)}`}
-      />
-      <InfoCard.Heading>{`${formatTime(created_at)} - ${type}`}</InfoCard.Heading>
-      <InfoCard.Title>{truncateWord(title)}</InfoCard.Title>
-      <InfoCard.Subtitle>{company}</InfoCard.Subtitle>
-      <InfoCard.Small>{location}</InfoCard.Small>
+      <CardInfoButton>
+        <InfoCard.Logo
+          color={randomColor()}
+          src={`${handleNullLogo(company_logo, defaultLogo)}`}
+        />
+        <InfoCard.Heading>{`${formatTime(created_at)} - ${type}`}</InfoCard.Heading>
+        <InfoCard.Title>{truncateWord(title)}</InfoCard.Title>
+        <InfoCard.Subtitle>{company}</InfoCard.Subtitle>
+        <InfoCard.Small>{location}</InfoCard.Small>
+      </CardInfoButton>
     </StyledInfoCard>
   )
 }
