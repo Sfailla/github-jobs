@@ -2,7 +2,7 @@ import React from 'react'
 import Searchbar from '..'
 import { SearchIcon, LocationIcon } from '../../../assets/icons'
 import { Wrapper, SvgWrapper } from './style'
-import { SearchbarButton as Button } from '../../button'
+import { SearchbarButton as Button } from '../../buttons'
 import { useWindowSize } from '../../../hooks'
 
 export default function SearchbarContainer() {

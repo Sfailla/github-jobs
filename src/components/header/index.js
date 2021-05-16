@@ -4,7 +4,6 @@ import Toggle from '../toggle'
 import { LayoutWrapper } from '../../styles/shared'
 import { HeaderContent } from './style'
 import { useWindowSize, useLayoutType } from '../../hooks'
-import Searchbar from '../searchbar/desktop'
 
 import { ReactComponent as Logo } from '../../assets/desktop/logo.svg'
 import desktop from '../../assets/desktop/bg-pattern-header.svg'
@@ -27,7 +26,6 @@ export default function HeaderContainer() {
           <Logo width={115} height={32} alt="logo" />
           <Toggle />
         </HeaderContent>
-        <Searchbar />
       </LayoutWrapper>
     </Header>
   )

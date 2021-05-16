@@ -8,13 +8,14 @@ export const Container = styled.div`
   width: 100%;
   height: ${searchbarHeight};
   background: ${({ theme }) => theme.background.secondary};
-  margin-top: 4rem;
   border-radius: 6px;
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(2, auto) min-content;
   grid-template-rows: 8rem;
   box-shadow: ${shadow.small};
+  position: absolute;
+  top: -4rem;
 
   & > div:not(:last-child) {
     border-right: 1px solid rgba(110, 128, 152, 0.2);

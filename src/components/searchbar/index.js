@@ -12,8 +12,8 @@ export default function Searchbar({ children }) {
   return <Container>{children}</Container>
 }
 
-function SearchbarSection({ children, ...props }) {
-  return <React.Fragment {...props}>{children}</React.Fragment>
+function SearchbarSection({ children }) {
+  return <React.Fragment>{children}</React.Fragment>
 }
 
 function SearchbarInputGroup({ children }) {

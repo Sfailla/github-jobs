@@ -8,6 +8,7 @@ export const Container = styled.div`
 `
 
 export const GridContainer = styled.div`
+  padding-top: 12rem;
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-column-gap: 1rem;
