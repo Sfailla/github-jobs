@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
 import { media, DesignSystem } from '../../styles/shared'
+import { flex } from '../../styles/mixins'
 
 const { color } = DesignSystem
 
@@ -28,7 +29,19 @@ export const SearchbarButton = styled(StyledButton)`
   min-width: 14.1rem;
   margin-left: 2.7rem;
 
-  ${media.lg`min-width: 8rem`}
+  ${media.lg`min-width: 8rem;`}
+`
+
+export const CardInfoButton = styled.button`
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  user-select: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 5.4rem 3.2rem 3.2rem 3.2rem;
+  ${flex('space-between', 'flex-start', 'column')};
 `
 
 // export const MobileSearchButton = styled(StyledButton)`
