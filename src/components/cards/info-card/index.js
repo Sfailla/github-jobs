@@ -9,7 +9,7 @@ import {
   randomColor
 } from '../../../utils/helperFns'
 
-export default function InfoCard({ data }) {
+function InfoCard({ data }) {
   const { company, company_logo, title, created_at, location, type } = data
 
   return (
@@ -53,3 +53,5 @@ InfoCard.Subtitle = InfoCardSubtitle
 InfoCard.Heading = InfoCardHeading
 InfoCard.Small = InfoCardSmall
 InfoCard.Logo = InfoCardLogo
+
+export default React.memo(InfoCard)

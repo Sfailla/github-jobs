@@ -6,7 +6,7 @@ import { DesignSystem, media } from '../../../styles/shared'
 const { color } = DesignSystem
 
 export const StyledInfoCard = styled(StyledCard)`
-  max-width: 35rem;
+  max-width: 100%;
   height: 22.8rem;
   position: relative;
 
