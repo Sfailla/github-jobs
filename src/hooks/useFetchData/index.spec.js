@@ -38,7 +38,7 @@ describe('custom useFetchData hook', () => {
 
     await waitForNextUpdate({ timeout: 6000 })
 
-    expect(global.fetch).toHaveBeenCalledWith(fetchUrl)
+    expect(global.fetch).toHaveBeenCalledWith(fetchUrl, { method: 'GET' })
     expect(global.fetch).toHaveBeenCalledTimes(1)
     expect(result.current).toStrictEqual({
       results: stubbedJobs,

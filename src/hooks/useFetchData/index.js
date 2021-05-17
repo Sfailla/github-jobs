@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useFetchData = query => {
+const useFetchData = (query, options = {}) => {
   const [results, setResults] = React.useState({})
   const [isLoading, setIsLoading] = React.useState(false)
   const [error, setError] = React.useState({})
@@ -14,8 +14,11 @@ const useFetchData = query => {
         setIsLoading(false)
       } else {
         try {
-          const response = await fetch(query)
+          // set basic config | also allow ability to override or add custom config
+          const config = { method: 'GET', ...options }
+          const response = await fetch(query, config)
           const data = await response.json()
+          // set cache data with url query
           cache.current[query] = data
           setResults(data)
         } catch (error) {
