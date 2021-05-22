@@ -2,12 +2,7 @@ import React from 'react'
 import { StyledInfoCard, Title, Label, Span, Logo } from './style'
 import { CardInfoButton } from '../../buttons'
 import defaultLogo from '../../../assets/company-logo.svg'
-import {
-  formatTime,
-  truncateWord,
-  handleNullLogo,
-  randomColor
-} from '../../../utils/helperFns'
+import { formatTime, truncateWord, handleNullLogo, randomColor } from '../../../utils/helperFns'
 
 function InfoCard({ data }) {
   const { company, company_logo, title, created_at, location, type } = data
@@ -15,10 +10,7 @@ function InfoCard({ data }) {
   return (
     <StyledInfoCard>
       <CardInfoButton>
-        <InfoCard.Logo
-          color={randomColor()}
-          src={`${handleNullLogo(company_logo, defaultLogo)}`}
-        />
+        <InfoCard.Logo color={randomColor()} src={`${handleNullLogo(company_logo, defaultLogo)}`} />
         <InfoCard.Heading>{`${formatTime(created_at)} - ${type}`}</InfoCard.Heading>
         <InfoCard.Title>{truncateWord(title)}</InfoCard.Title>
         <InfoCard.Subtitle>{company}</InfoCard.Subtitle>
