@@ -6,19 +6,19 @@ const useFetchData = (query, options = {}) => {
   const [error, setError] = React.useState({})
   const cache = React.useRef({})
 
-  React.useEffect(() => {
-    async function getApiData() {
+  React.useEffect(() => {    
+    (async function () {
       setIsLoading(true)
       if (cache.current[query]) {
         setResults(cache.current[query])
         setIsLoading(false)
       } else {
         try {
-          // set basic config | also allow ability to override or add custom config
+          // set default config | also allow ability to override default config
           const config = { method: 'GET', ...options }
           const response = await fetch(query, config)
           const data = await response.json()
-          // set cache data with url query
+
           cache.current[query] = data
           setResults(data)
         } catch (error) {
@@ -27,9 +27,7 @@ const useFetchData = (query, options = {}) => {
           setIsLoading(false)
         }
       }
-    }
-
-    getApiData()
+    })()
     // eslint-disable-next-line
   }, [query])
 

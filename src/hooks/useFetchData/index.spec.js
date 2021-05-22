@@ -17,12 +17,13 @@ const stubbedJobs = [
 ]
 
 const fetchUrl = 'https://jobs.github.com/positions.json'
+const fetchUrl2 = 'https://jobs.github.com/positions.json?description=javascript'
 
 afterEach(() => global.fetch.mockClear())
 afterAll(() => global.fetch.mockRestore())
 
 describe('custom useFetchData hook', () => {
-  it('should return data after fetch', async () => {
+  test('should make successful api call and return data', async () => {
     // mock the api call
     jest.spyOn(global, 'fetch').mockImplementation(
       async () =>
@@ -47,7 +48,7 @@ describe('custom useFetchData hook', () => {
     })
   })
 
-  it('should respond with error', async () => {
+  test('should respond with error when promise is rejected', async () => {
     // mock api call
     jest
       .spyOn(global, 'fetch')
@@ -65,4 +66,6 @@ describe('custom useFetchData hook', () => {
       error: 'error fetching url'
     })
   })
+
+  // test('should use cached url instead of making same api calll', async () => {})
 })
