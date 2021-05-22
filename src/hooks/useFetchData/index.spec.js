@@ -33,18 +33,18 @@ describe('custom useFetchData hook', () => {
     )
 
     // execute fetch request
-    const { result, waitForNextUpdate } = renderHook(() => useFetchData(fetchUrl))
+    const { result, waitFor } = renderHook(() => useFetchData(fetchUrl))
 
     expect(result.current.isLoading).toBe(true)
 
-    await waitForNextUpdate({ timeout: 6000 })
-
-    expect(global.fetch).toHaveBeenCalledWith(fetchUrl, { method: 'GET' })
-    expect(global.fetch).toHaveBeenCalledTimes(1)
-    expect(result.current).toStrictEqual({
-      results: stubbedJobs,
-      isLoading: false,
-      error: {}
+    await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalledWith(fetchUrl, { method: 'GET' })
+      expect(global.fetch).toHaveBeenCalledTimes(1)
+      expect(result.current).toStrictEqual({
+        results: stubbedJobs,
+        isLoading: false,
+        error: {}
+      })
     })
   })
 
@@ -54,16 +54,16 @@ describe('custom useFetchData hook', () => {
       .spyOn(global, 'fetch')
       .mockImplementation(async () => await Promise.reject('error fetching url'))
 
-    const { result, waitForNextUpdate } = renderHook(() => useFetchData(fetchUrl))
+    const { result, waitFor } = renderHook(() => useFetchData(fetchUrl))
 
     expect(result.current.isLoading).toBe(true)
 
-    await waitForNextUpdate({ timeout: 6000 })
-
-    expect(result.current).toStrictEqual({
-      results: {},
-      isLoading: false,
-      error: 'error fetching url'
+    await waitFor(() => {
+      expect(result.current).toStrictEqual({
+        results: {},
+        isLoading: false,
+        error: 'error fetching url'
+      })
     })
   })
 

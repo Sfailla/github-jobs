@@ -6,8 +6,8 @@ const useFetchData = (query, options = {}) => {
   const [error, setError] = React.useState({})
   const cache = React.useRef({})
 
-  React.useEffect(() => {    
-    (async function () {
+  React.useEffect(() => {
+    ;(async function () {
       setIsLoading(true)
       if (cache.current[query]) {
         setResults(cache.current[query])
