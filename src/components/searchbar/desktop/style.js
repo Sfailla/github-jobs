@@ -47,6 +47,8 @@ export const Wrapper = styled.div`
   z-index: 1;
 `
 
+export const Form = styled.form``
+
 export const SvgWrapper = styled.div`
   width: 2.4rem;
   height: 2.4rem;

@@ -5,24 +5,19 @@ import { Wrapper, SvgWrapper } from './style'
 import { SearchbarButton as Button } from '../../buttons'
 import { useWindowSize } from '../../../hooks'
 
-export default function SearchbarContainer() {
-  const [checked, setChecked] = React.useState(false)
+function SearchbarContainer({ handleSubmit, handleChange, handleCheck, checked }) {
   const { width } = useWindowSize()
   const isSmallScreen = width < 992
 
-  const handleCheck = () => setChecked(checked => !checked)
-
   return (
-    <Searchbar>
+    <Searchbar onSubmit={handleSubmit}>
       <Searchbar.Section>
         <Searchbar.InputGroup>
-          <Searchbar.Input placeholder=" " />
+          <Searchbar.Input name="search" onChange={handleChange} placeholder=" " />
           <Wrapper>
             <SearchIcon />
             <Searchbar.Label>
-              {isSmallScreen
-                ? 'Filter by title...'
-                : 'Filter by title, companies, expertise...'}
+              {isSmallScreen ? 'Filter by title...' : 'Filter by title, companies, expertise...'}
             </Searchbar.Label>
           </Wrapper>
         </Searchbar.InputGroup>
@@ -30,7 +25,7 @@ export default function SearchbarContainer() {
 
       <Searchbar.Section>
         <Searchbar.InputGroup>
-          <Searchbar.Input placeholder=" " />
+          <Searchbar.Input name="location" onChange={handleChange} placeholder=" " />
           <Wrapper>
             <SvgWrapper>
               <LocationIcon />
@@ -43,12 +38,16 @@ export default function SearchbarContainer() {
       <Searchbar.Section>
         <Searchbar.InputGroup>
           <Wrapper>
-            <Searchbar.Checkbox onChange={handleCheck} checked={checked} />
+            <Searchbar.Checkbox name="full-time" onChange={handleCheck} checked={checked} />
             <Searchbar.Label bold>Full time only</Searchbar.Label>
-            <Button style={{ marginLeft: '1rem' }}>Search</Button>
+            <Button type="submit" style={{ marginLeft: '1rem' }}>
+              Search
+            </Button>
           </Wrapper>
         </Searchbar.InputGroup>
       </Searchbar.Section>
     </Searchbar>
   )
 }
+
+export default React.memo(SearchbarContainer)

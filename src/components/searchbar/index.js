@@ -2,14 +2,19 @@ import React from 'react'
 import {
   Container,
   InputContainer,
+  Form,
   Label,
   BoldLabel,
   Input,
   Checkbox
 } from './desktop/style'
 
-export default function Searchbar({ children }) {
-  return <Container>{children}</Container>
+function Searchbar({ children, ...props }) {
+  return (
+    <Form {...props}>
+      <Container>{children}</Container>
+    </Form>
+  )
 }
 
 function SearchbarSection({ children }) {
@@ -38,3 +43,5 @@ Searchbar.InputGroup = SearchbarInputGroup
 Searchbar.Label = SearchLabel
 Searchbar.Input = SearchInput
 Searchbar.Checkbox = SearchCheckbox
+
+export default Searchbar
