@@ -2,6 +2,8 @@ export default function useBuildQuery(formValues = {}, page = null) {
   const CORS_PROXY = 'https://cors.bridged.cc/'
   const BASE_URL = `${CORS_PROXY}https://jobs.github.com/positions.json`
 
+  console.log(formValues)
+
   const buildQuery = [
     `${BASE_URL}?`,
     formValues.search && `&search=${formValues.search}`,
