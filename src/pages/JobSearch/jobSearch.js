@@ -1,9 +1,10 @@
 import React from 'react'
-import { useFetchData, useBuildQuery } from '../../hooks'
+import { useFetchData, useBuildQuery, useFormValidation } from '../../hooks'
 import { Container, GridContainer } from './style'
 import { InfoCard as Card } from '../../components/cards'
 import Searchbar from '../../components/searchbar/desktop'
 import { LayoutWrapper } from '../../styles/shared'
+import validate from './validateJobSearch'
 
 const INITIAL_VALUES = {
   search: null,
@@ -11,28 +12,52 @@ const INITIAL_VALUES = {
   full_time: false
 }
 
+// Hook
+function useDebounce(value, delay) {
+  // State and setters for debounced value
+  const [debouncedValue, setDebouncedValue] = React.useState(value)
+  React.useEffect(
+    () => {
+      // Update debounced value after delay
+      const handler = setTimeout(() => {
+        setDebouncedValue(value)
+      }, delay)
+      // Cancel the timeout if value changes (also on delay change or unmount)
+      // This is how we prevent debounced value from updating if value is changed ...
+      // .. within the delay period. Timeout gets cleared and restarted.
+      return () => {
+        clearTimeout(handler)
+      }
+    },
+    [value, delay] // Only re-call effect if value or delay changes
+  )
+  return debouncedValue
+}
+
 function JobSearch() {
   const [checked, setChecked] = React.useState(false)
-  const [{ search, location, full_time }, setValues] = React.useState(INITIAL_VALUES)
   const [updateQuery, setUpdateQuery] = React.useState({})
+
+  const { values, handleChange, handleSubmit } = useFormValidation(
+    INITIAL_VALUES,
+    validate,
+    submitRequest
+  )
 
   const handleCheck = React.useCallback(() => setChecked(checked => !checked), [])
 
-  function handleChange(event) {
-    const { name, value } = event.target
-    event.persist()
+  // const debounceSearch = useDebounce(search, 1000)
 
-    setValues({ [name]: value })
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    setUpdateQuery({ search, location, full_time, page: 1 })
+  function submitRequest() {
+    setUpdateQuery({
+      search: values.search,
+      location: values.location,
+      full_time: values.full_time,
+      page: 1
+    })
   }
 
   const query = useBuildQuery({ ...updateQuery })
-
-  console.log(query)
 
   const { results, isLoading } = useFetchData(query)
 
