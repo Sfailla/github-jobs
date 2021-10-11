@@ -3,7 +3,8 @@ import { media } from '../../styles/shared'
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 100vh;
   padding: 0 2rem;
   background-color: ${({ theme }) => theme.background.primary};
 `
@@ -17,8 +18,12 @@ export const GridContainer = styled.div`
   justify-content: flex-start;
 
   ${media.lg`
-      grid-template-columns: repeat(2, 1fr);  
-      grid-column-gap: 3rem; 
-      justify-content: space-around;
+    grid-template-columns: repeat(2, 1fr);  
+    grid-column-gap: 3rem; 
+    justify-content: space-around;
   `};
+
+  ${media.md`
+    grid-template-columns: 1fr; 
+  `}
 `
