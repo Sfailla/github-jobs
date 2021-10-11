@@ -1,47 +1,24 @@
 import React from 'react'
-import {
-  Container,
-  InputContainer,
-  Form,
-  Label,
-  BoldLabel,
-  Input,
-  Checkbox
-} from './desktop/style'
+import { SearchbarComponents as Searchbar } from './components'
+import DesktopSearchbar from './desktop'
+import MobileSearchbar from './mobile'
 
-function Searchbar({ children, ...props }) {
+import { useWindowSize } from '../../hooks'
+
+function SearchbarContainer({ handleSubmit, handleChange, setChecked, checked }) {
+  const { width } = useWindowSize()
+
+  const handleCheck = React.useCallback(() => setChecked(checked => !checked), [setChecked])
+
   return (
-    <Form {...props}>
-      <Container>{children}</Container>
-    </Form>
+    <Searchbar onSubmit={handleSubmit}>
+      {width > 768 ? (
+        <DesktopSearchbar {...{ handleCheck, handleChange, checked }} />
+      ) : (
+        <MobileSearchbar {...{ handleChange }} />
+      )}
+    </Searchbar>
   )
 }
 
-function SearchbarSection({ children }) {
-  return <React.Fragment>{children}</React.Fragment>
-}
-
-function SearchbarInputGroup({ children }) {
-  return <InputContainer>{children}</InputContainer>
-}
-
-function SearchLabel({ bold = false, children, ...props }) {
-  let Component = bold ? BoldLabel : Label
-  return <Component {...props}>{children}</Component>
-}
-
-function SearchInput({ ...props }) {
-  return <Input {...props} />
-}
-
-function SearchCheckbox({ ...props }) {
-  return <Checkbox type="checkbox" {...props} />
-}
-
-Searchbar.Section = SearchbarSection
-Searchbar.InputGroup = SearchbarInputGroup
-Searchbar.Label = SearchLabel
-Searchbar.Input = SearchInput
-Searchbar.Checkbox = SearchCheckbox
-
-export default Searchbar
+export default SearchbarContainer

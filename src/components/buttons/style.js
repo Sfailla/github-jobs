@@ -44,17 +44,7 @@ export const CardInfoButton = styled.button`
   ${flex('space-between', 'flex-start', 'column')};
 `
 
-// export const MobileSearchButton = styled(StyledButton)`
-//   width: 4.8rem;
-//   /* ${color}; */
-// `
-
-// export const IconButton = styled.button`
-//   width: 48px;
-//   height: 48px;
-//   border: 0;
-//   outline: 0;
-//   background: transparent;
-//   cursor: pointer;
-//   z-index: 10;
-// `
+export const MobileSearchButton = styled(StyledButton)`
+  width: 4.8rem;
+  ${flex()}
+`

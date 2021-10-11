@@ -1,21 +1,21 @@
 import React from 'react'
-import Searchbar from '..'
+import { SearchbarComponents as Searchbar } from '../components'
 import { SearchIcon, LocationIcon } from '../../../assets/icons'
-import { Wrapper, SvgWrapper } from './style'
+import { Wrapper, SvgWrapper } from '../components/searchbar/style'
 import { SearchbarButton as Button } from '../../buttons'
 import { useWindowSize } from '../../../hooks'
 
-function SearchbarContainer({ handleSubmit, handleChange, handleCheck, checked }) {
+function DesktopSearchbar({ handleChange, handleCheck, checked }) {
   const { width } = useWindowSize()
   const isSmallScreen = width < 992
 
   return (
-    <Searchbar onSubmit={handleSubmit}>
+    <React.Fragment>
       <Searchbar.Section>
         <Searchbar.InputGroup>
           <Searchbar.Input name="search" onChange={handleChange} placeholder=" " />
           <Wrapper>
-            <SearchIcon />
+            <SearchIcon width={24} height={24} fill="#5964E0" />
             <Searchbar.Label>
               {isSmallScreen ? 'Filter by title...' : 'Filter by title, companies, expertise...'}
             </Searchbar.Label>
@@ -46,8 +46,8 @@ function SearchbarContainer({ handleSubmit, handleChange, handleCheck, checked }
           </Wrapper>
         </Searchbar.InputGroup>
       </Searchbar.Section>
-    </Searchbar>
+    </React.Fragment>
   )
 }
 
-export default React.memo(SearchbarContainer)
+export default React.memo(DesktopSearchbar)
