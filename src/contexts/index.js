@@ -7,7 +7,7 @@ export const AppContext = React.createContext()
 export const AppContextProvider = ({ children }) => {
   const [mode, setMode] = React.useState('light')
 
-  const values = { setMode }
+  const values = React.useMemo(() => ({ setMode }), [setMode])
 
   return (
     <AppContext.Provider value={values}>
