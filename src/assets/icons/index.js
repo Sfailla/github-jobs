@@ -3,5 +3,6 @@ import { ReactComponent as LocationIcon } from '../desktop/icon-location.svg'
 import { ReactComponent as CheckmarkIcon } from '../desktop/icon-check.svg'
 import { ReactComponent as SunIcon } from '../desktop/icon-sun.svg'
 import { ReactComponent as MoonIcon } from '../desktop/icon-moon.svg'
+import { ReactComponent as FilterIcon } from '../mobile/icon-filter.svg'
 
-export { SearchIcon, LocationIcon, CheckmarkIcon, SunIcon, MoonIcon }
+export { SearchIcon, LocationIcon, CheckmarkIcon, SunIcon, MoonIcon, FilterIcon }
