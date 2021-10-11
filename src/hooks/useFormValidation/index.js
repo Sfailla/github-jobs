@@ -1,7 +1,5 @@
 import React from 'react'
 
-// all the bad code committed
-
 function useFormValidation(initialState, validate, authenticate) {
   const [values, setValues] = React.useState(initialState)
   const [errors, setErrors] = React.useState({})
@@ -9,7 +7,6 @@ function useFormValidation(initialState, validate, authenticate) {
 
   React.useEffect(() => {
     if (isSubmitting) {
-      console.log(Object.keys(errors).length === 0)
       const noErrors = Object.keys(errors).length === 0
       if (noErrors) {
         authenticate()

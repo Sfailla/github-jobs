@@ -7,7 +7,7 @@ const useFetchData = (query, options = {}) => {
   const cache = React.useRef({})
 
   React.useEffect(() => {
-    ;(async function () {
+    async function handleAsync() {
       setIsLoading(true)
       if (cache.current[query]) {
         setResults(cache.current[query])
@@ -27,7 +27,8 @@ const useFetchData = (query, options = {}) => {
           setIsLoading(false)
         }
       }
-    })()
+    }
+    handleAsync()
     // eslint-disable-next-line
   }, [query])
 
