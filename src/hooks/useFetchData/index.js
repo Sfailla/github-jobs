@@ -19,8 +19,8 @@ const useFetchData = (query, options = {}) => {
           const response = await fetch(query, config)
           const data = await response.json()
 
-          cache.current[query] = data
-          setResults(data)
+          cache.current[query] = data.results
+          setResults(data.results)
         } catch (error) {
           setError(error)
         } finally {

@@ -6,7 +6,7 @@ import Searchbar from '../../components/searchbar'
 import { LayoutWrapper } from '../../styles/shared'
 import validate from './validateJobSearch'
 
-const INITIAL_DATA = { search: null, location: null }
+const INITIAL_DATA = { search: 'javascript developer', location: 'us' }
 
 function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   const [checked, setChecked] = React.useState(false)
@@ -20,7 +20,7 @@ function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   function submitRequest() {
     setUpdateQuery({
       search: values.search,
-      location: values.location,
+      location: 'us',
       full_time: checked || null,
       page: 1
     })
