@@ -11,7 +11,10 @@ function App() {
   const [updateQuery, setUpdateQuery] = React.useState({})
 
   const query = useBuildQuery({ ...updateQuery })
+  console.log(query)
+
   const { results, isLoading } = useFetchData(query)
+  console.log(results)
 
   return (
     <AppContextProvider>

@@ -1,6 +1,8 @@
 import React from 'react'
-import Header from './header'
 import Toggle from '../toggle'
+
+import { SunIcon, MoonIcon } from '../../assets/icons'
+import { Background } from './style'
 import { LayoutWrapper } from '../../styles/shared'
 import { HeaderContent } from './style'
 import { useWindowSize, useLayoutType } from '../../hooks'
@@ -10,7 +12,7 @@ import desktop from '../../assets/desktop/bg-pattern-header.svg'
 import tablet from '../../assets/tablet/bg-pattern-header.svg'
 import mobile from '../../assets/mobile/bg-pattern-header.svg'
 
-export default function HeaderContainer() {
+export default function Header() {
   const { width } = useWindowSize()
   const { layout } = useLayoutType(width)
 
@@ -20,13 +22,25 @@ export default function HeaderContainer() {
   }, [layout])
 
   return (
-    <Header $src={handleSvgBackgroundSrc}>
+    <Background $src={handleSvgBackgroundSrc}>
       <LayoutWrapper>
         <HeaderContent>
           <Logo width={115} height={32} alt="logo" />
-          <Toggle />
+          <Toggle>
+            <Toggle.Label>
+              {({ on }) => (
+                <SunIcon style={{ color: on ? 'white' : 'gold' }} width={20} height={18} />
+              )}
+            </Toggle.Label>
+            <Toggle.Button />
+            <Toggle.Label>
+              {({ on }) => (
+                <MoonIcon style={{ color: on ? 'gold' : 'white' }} width={12} height={12} />
+              )}
+            </Toggle.Label>
+          </Toggle>
         </HeaderContent>
       </LayoutWrapper>
-    </Header>
+    </Background>
   )
 }
