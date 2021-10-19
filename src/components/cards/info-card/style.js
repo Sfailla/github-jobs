@@ -42,6 +42,7 @@ export const Span = styled.span`
 export const Logo = styled.img`
   width: 5rem;
   height: 5rem;
+  padding: 5px;
   object-fit: contain;
   border-radius: 1.5rem;
   position: absolute;

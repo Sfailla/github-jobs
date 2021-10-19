@@ -48,3 +48,7 @@ export const MobileSearchButton = styled(StyledButton)`
   width: 4.8rem;
   ${flex()}
 `
+export const ApplyButton = styled(StyledButton)`
+  width: 14.1rem;
+  height: 4.8rem;
+`

@@ -1,6 +1,6 @@
 import React from 'react'
 import { screen, fireEvent, render } from '../../test/test-utils'
-import Toggle from '../toggle/toggle'
+import Toggle from './'
 
 describe('Toggle component tests', () => {
   it('renders the <Toggle /> component', () => {

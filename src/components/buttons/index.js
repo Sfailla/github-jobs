@@ -1,1 +1,7 @@
-export { StyledButton, SearchbarButton, CardInfoButton, MobileSearchButton } from './style'
+export {
+  StyledButton,
+  SearchbarButton,
+  CardInfoButton,
+  MobileSearchButton,
+  ApplyButton
+} from './style'
