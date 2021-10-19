@@ -1,10 +1,51 @@
 import React from 'react'
 
-function JobInfo() {
+import { formatTime, truncateWord } from '../../utils/helperFns'
+import { LayoutWrapper } from '../../styles/shared'
+import { ApplyButton } from '../../components/buttons'
+import {
+  Container,
+  Divider,
+  DetailsContainer,
+  DetailsHeader,
+  DetailsContent,
+  ButtonContainer,
+  Heading,
+  Title,
+  Subtitle,
+  Paragraph
+} from './style'
+
+function JobInfo(props) {
+  const [jobDetails, setJobDetails] = React.useState(props.location.state)
+
+  console.log(jobDetails)
+
   return (
-    <div>
-      <h3>This Page Will Provide Info For A Specific Job</h3>
-    </div>
+    <Container>
+      <LayoutWrapper>
+        <DetailsContainer>
+          <DetailsHeader>
+            <Divider>
+              <Heading>{`${formatTime(jobDetails.created)} - ${
+                jobDetails.category.label
+              }`}</Heading>
+              <Title>{jobDetails.title}</Title>
+              <Subtitle>{jobDetails.location.display_name}</Subtitle>
+            </Divider>
+            <Divider>
+              <ButtonContainer>
+                <ApplyButton>Apply</ApplyButton>
+              </ButtonContainer>
+            </Divider>
+          </DetailsHeader>
+
+          <DetailsContent>
+            <Paragraph>{jobDetails.description}</Paragraph>
+          </DetailsContent>
+        </DetailsContainer>
+      </LayoutWrapper>
+    </Container>
   )
 }
 
