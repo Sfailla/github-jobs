@@ -19,8 +19,8 @@ const useFetchData = (query, options = {}) => {
           const response = await fetch(query, config)
           const data = await response.json()
 
-          cache.current[query] = data.results
-          setResults(data.results)
+          cache.current[query] = data
+          setResults(data)
         } catch (error) {
           setError(error)
         } finally {
@@ -29,7 +29,7 @@ const useFetchData = (query, options = {}) => {
       }
     }
     handleAsync()
-    // eslint-disable-next-line
+    //eslint-disable-next-line
   }, [query])
 
   return { results, isLoading, error }
