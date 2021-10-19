@@ -16,8 +16,7 @@ const stubbedJobs = [
   }
 ]
 
-const fetchUrl = 'https://jobs.github.com/positions.json'
-const fetchUrl2 = 'https://jobs.github.com/positions.json?description=javascript'
+const fetchUrl = 'https://api-call.com'
 
 afterEach(() => global.fetch.mockClear())
 afterAll(() => global.fetch.mockRestore())
@@ -33,18 +32,18 @@ describe('custom useFetchData hook', () => {
     )
 
     // execute fetch request
-    const { result, waitFor } = renderHook(() => useFetchData(fetchUrl))
+    const { result, waitForNextUpdate } = renderHook(() => useFetchData(fetchUrl))
 
     expect(result.current.isLoading).toBe(true)
 
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(fetchUrl, { method: 'GET' })
-      expect(global.fetch).toHaveBeenCalledTimes(1)
-      expect(result.current).toStrictEqual({
-        results: stubbedJobs,
-        isLoading: false,
-        error: {}
-      })
+    await waitForNextUpdate()
+
+    expect(global.fetch).toHaveBeenCalledWith(fetchUrl, { method: 'GET' })
+    expect(global.fetch).toHaveBeenCalledTimes(1)
+    expect(result.current).toStrictEqual({
+      results: stubbedJobs,
+      isLoading: false,
+      error: {}
     })
   })
 
