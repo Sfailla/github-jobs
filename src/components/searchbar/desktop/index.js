@@ -13,10 +13,10 @@ function DesktopSearchbar({ handleChange, handleCheck, checked }) {
     <React.Fragment>
       <Searchbar.Section>
         <Searchbar.InputGroup>
-          <Searchbar.Input name="search" onChange={handleChange} placeholder=" " />
+          <Searchbar.Input id="job-search" name="search" onChange={handleChange} placeholder=" " />
           <Wrapper>
             <SearchIcon width={24} height={24} fill="#5964E0" />
-            <Searchbar.Label>
+            <Searchbar.Label htmlFor="job-search">
               {isSmallScreen ? 'Filter by title...' : 'Filter by title, companies, expertise...'}
             </Searchbar.Label>
           </Wrapper>
@@ -25,12 +25,17 @@ function DesktopSearchbar({ handleChange, handleCheck, checked }) {
 
       <Searchbar.Section>
         <Searchbar.InputGroup>
-          <Searchbar.Input name="location" onChange={handleChange} placeholder=" " />
+          <Searchbar.Input
+            id="location-search"
+            name="location"
+            onChange={handleChange}
+            placeholder=" "
+          />
           <Wrapper>
             <SvgWrapper>
               <LocationIcon />
             </SvgWrapper>
-            <Searchbar.Label>Filter by location...</Searchbar.Label>
+            <Searchbar.Label htmlFor="location-search">Filter by location...</Searchbar.Label>
           </Wrapper>
         </Searchbar.InputGroup>
       </Searchbar.Section>
@@ -38,8 +43,15 @@ function DesktopSearchbar({ handleChange, handleCheck, checked }) {
       <Searchbar.Section>
         <Searchbar.InputGroup>
           <Wrapper>
-            <Searchbar.Checkbox name="full-time" onChange={handleCheck} checked={checked} />
-            <Searchbar.Label bold>Full time only</Searchbar.Label>
+            <Searchbar.Checkbox
+              id="full-time"
+              name="full-time"
+              onChange={handleCheck}
+              checked={checked}
+            />
+            <Searchbar.Label htmlFor="full-time" bold>
+              Full time only
+            </Searchbar.Label>
             <Button type="submit" style={{ marginLeft: '1rem' }}>
               Search
             </Button>

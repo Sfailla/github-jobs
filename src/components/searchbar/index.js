@@ -5,10 +5,11 @@ import MobileSearchbar from './mobile'
 
 import { useWindowSize } from '../../hooks'
 
-function Searchbar({ handleSubmit, handleChange, setChecked, checked }) {
+function Searchbar({ handleSubmit, handleChange }) {
+  const [checked, setChecked] = React.useState(false)
   const { width } = useWindowSize()
 
-  const handleCheck = React.useCallback(() => setChecked(checked => !checked), [setChecked])
+  const handleCheck = () => setChecked(checked => !checked)
 
   return (
     <Search onSubmit={handleSubmit}>
