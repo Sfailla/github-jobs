@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components/macro'
 
 // Layout and global Variables
 export const headerHeight = '16rem'

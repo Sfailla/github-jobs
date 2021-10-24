@@ -10,7 +10,8 @@ export const theme = {
     },
     button: {
       normal: 'rgba(89, 100, 224, .10)',
-      hover: 'rgba(89, 100, 224, .35)'
+      hover: 'rgba(89, 100, 224, .35)',
+      text: '#5964E0'
     },
     text: {
       normal: '#19202D'
@@ -27,7 +28,8 @@ export const theme = {
     },
     button: {
       normal: 'rgba(255, 255, 255, .10)',
-      hover: 'rgba(255, 255, 255, .35)'
+      hover: 'rgba(255, 255, 255, .35)',
+      text: '#FFFFFF'
     },
     text: {
       normal: '#FFFFFF'
