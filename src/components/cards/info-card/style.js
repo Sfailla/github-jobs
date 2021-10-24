@@ -39,14 +39,14 @@ export const Span = styled.span`
   color: ${color.primary.deepblue};
 `
 
-export const Logo = styled.img`
+export const Logo = styled.div`
   width: 5rem;
   height: 5rem;
   padding: 5px;
-  object-fit: contain;
   border-radius: 1.5rem;
   position: absolute;
   top: -2.5rem;
   left: 3.2rem;
-  background-color: ${({ color }) => color};
+  ${flex()}
+  background-color: ${({ $color }) => $color};
 `

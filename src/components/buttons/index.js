@@ -3,5 +3,6 @@ export {
   SearchbarButton,
   CardInfoButton,
   MobileSearchButton,
-  ApplyButton
+  ApplyButton,
+  InfoButton
 } from './style'

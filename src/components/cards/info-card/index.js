@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledInfoCard, Title, Label, Span, Logo } from './style'
 import { CardInfoButton } from '../../buttons'
-import defaultLogo from '../../../assets/company-logo.svg'
+import { ReactComponent as CompanyLogo } from '../../../assets/company-logo.svg'
 import { useHistory } from 'react-router-dom'
 import { formatTime, truncateWord, randomColor } from '../../../utils/helperFns'
 
@@ -23,7 +23,7 @@ function InfoCard({ data }) {
           })
         }
       >
-        <InfoCard.Logo color={randomColor()} src={defaultLogo} />
+        <InfoCard.Logo $color={randomColor()} />
         <InfoCard.Heading>{`${formatTime(created)} - ${data.category.label}`}</InfoCard.Heading>
         <InfoCard.Title>{truncateWord(title)}</InfoCard.Title>
         <InfoCard.Subtitle>{display_name}</InfoCard.Subtitle>
@@ -50,7 +50,11 @@ function InfoCardSmall({ children }) {
 }
 
 function InfoCardLogo({ ...props }) {
-  return <Logo {...props} />
+  return (
+    <Logo {...props}>
+      <CompanyLogo width={40} height={40} />
+    </Logo>
+  )
 }
 
 InfoCard.Title = InfoCardTitle

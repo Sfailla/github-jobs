@@ -52,3 +52,13 @@ export const ApplyButton = styled(StyledButton)`
   width: 14.1rem;
   height: 4.8rem;
 `
+
+export const InfoButton = styled(ApplyButton)`
+  letter-spacing: 0;
+  background-color: ${({ theme }) => theme.button.normal};
+  color: ${({ theme }) => theme.button.text};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.button.hover};
+  }
+`
