@@ -10,15 +10,11 @@ import validate from './validateJobSearch'
 const INITIAL_DATA = { search: 'javascript developer', location: 'us' }
 
 function JobSearch({ jobData, setUpdateQuery, isLoading }) {
-  const [checked, setChecked] = React.useState(false)
-
   const { values, handleChange, handleSubmit } = useFormValidation(
     INITIAL_DATA,
     validate,
     submitRequest
   )
-
-  console.log(jobData.results)
 
   function submitRequest() {
     setUpdateQuery(prevState => ({
@@ -31,7 +27,7 @@ function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   return (
     <Container>
       <LayoutWrapper>
-        <Searchbar {...{ checked, setChecked, handleChange, handleSubmit }} />
+        <Searchbar {...{ handleChange, handleSubmit }} />
         {isLoading ? (
           <div style={{ paddingTop: '8rem' }}>please wait while we load your data...</div>
         ) : (
