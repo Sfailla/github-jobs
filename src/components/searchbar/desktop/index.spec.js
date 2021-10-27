@@ -1,7 +1,7 @@
 import { render, fireEvent } from '../../../test/test-utils'
 import DesktopSearchbar from './index'
 
-describe('Desktop Searchbar tests', () => {
+describe('desktop search input tests', () => {
   test('should initially have empty string value for search input', () => {
     const { getByLabelText } = render(<DesktopSearchbar />)
     const input = getByLabelText('Filter by title, companies, expertise...')
@@ -15,7 +15,9 @@ describe('Desktop Searchbar tests', () => {
     fireEvent.change(input, { target: { value: 'javascript' } })
     expect(input.value).toEqual('javascript')
   })
+})
 
+describe('desktop location input tests', () => {
   test('should initially have empty string value for location input', () => {
     const { getByLabelText } = render(<DesktopSearchbar />)
     const input = getByLabelText('Filter by location...')
@@ -29,7 +31,9 @@ describe('Desktop Searchbar tests', () => {
     fireEvent.change(input, { target: { value: 'New York' } })
     expect(input.value).toEqual('New York')
   })
+})
 
+describe('searchbar desktop checkbox tests', () => {
   test('should toggle checkbox from false to true', () => {
     const { getByLabelText } = render(<DesktopSearchbar />)
     const input = getByLabelText('Full time only')

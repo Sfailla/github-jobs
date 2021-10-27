@@ -1,43 +1,68 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react-hooks'
+import { fireEvent } from '../../test/test-utils'
 import { useLayoutType } from '..'
 import { Breakpoints } from '../../styles/shared'
+
+/*
+  jestDom window innerWidth and innerHeight default to:
+      { 
+        innerWidth: 1024,
+        innerHeight: 768 
+      }
+*/
 
 describe('tests for useLayoutType hook', () => {
   const { xs, sm, md } = Breakpoints
 
-  it('should render desktop layout if breakpoint width is >= md', () => {
-    const { result } = renderHook(() => useLayoutType(md))
+  beforeEach(() => {
+    window.innerWidth = 1024
+  })
 
+  it('should render desktop layout if window size is greater then 768', () => {
+    const { result } = renderHook(() => useLayoutType())
+    expect(result.current.layout).not.toBe('tablet')
+    expect(result.current.layout).not.toBe('mobile')
     expect(result.current.layout).toBe('desktop')
   })
 
-  it('should not render desktop layout if breakpoint is not >= md', () => {
-    const { result } = renderHook(() => useLayoutType(sm))
-
+  it('should render tablet layout if window size is between 576 and 768', () => {
+    const { result } = renderHook(() => useLayoutType())
+    act(() => {
+      window.innerWidth = md
+      fireEvent(window, new Event('resize'))
+    })
     expect(result.current.layout).not.toBe('desktop')
-  })
-
-  it('should render tablet layout if breakpoint width is >= sm and < md', () => {
-    const { result } = renderHook(() => useLayoutType(sm))
-
+    expect(result.current.layout).not.toBe('mobile')
     expect(result.current.layout).toBe('tablet')
   })
 
-  it('should not render tablet layout if breakpoint width is not >= sm and <= md', () => {
-    const { result } = renderHook(() => useLayoutType(xs))
-
+  it('should render mobile layout if window width is < 576', () => {
+    const { result } = renderHook(() => useLayoutType())
+    act(() => {
+      window.innerWidth = sm - 1
+      fireEvent(window, new Event('resize'))
+    })
+    expect(result.current.layout).not.toBe('desktop')
     expect(result.current.layout).not.toBe('tablet')
-  })
-
-  it('should render mobile layout if breakpoint width is < sm', () => {
-    const { result } = renderHook(() => useLayoutType(xs))
-
     expect(result.current.layout).toBe('mobile')
   })
 
-  it('should not render mobile layout if breakpoint width is not < sm', () => {
-    const { result } = renderHook(() => useLayoutType(md))
+  test('should resize and update layout accordingly', () => {
+    const { result } = renderHook(() => useLayoutType())
+    expect(result.current.layout).toBe('desktop')
 
-    expect(result.current.layout).not.toBe('mobile')
+    act(() => {
+      window.innerWidth = md
+      fireEvent(window, new Event('resize'))
+    })
+
+    expect(result.current.layout).toBe('tablet')
+
+    act(() => {
+      window.innerWidth = xs
+      fireEvent(window, new Event('resize'))
+    })
+
+    expect(result.current.layout).toBe('mobile')
   })
 })
