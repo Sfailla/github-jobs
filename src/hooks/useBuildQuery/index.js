@@ -1,9 +1,16 @@
 export default function useBuildQuery(values) {
-  const BASE_URL = `https://api.adzuna.com/v1/api/jobs/us/search/${values?.page}?app_id=4a514151&app_key=cab9e5a8b0fb8a790eb7c91c5b037f92&results_per_page=20&content-type=application/json`
+  const APP_ID = process.env.REACT_APP_API_ID
+  const APP_KEY = process.env.REACT_APP_API_KEY
+  const CONTENT_TYPE = 'application/json'
+
+  const BASE_URL = `https://api.adzuna.com/v1/api/jobs/us/search/${values?.page}`
+  const BASE_QUERY = `?app_id=${APP_ID}&app_key=${APP_KEY}&content-type=${CONTENT_TYPE}&results_per_page=15`
 
   const buildQuery = [
-    `${BASE_URL}?`,
-    values?.search && `&what=${encodeURIComponent(values?.search)}`
+    `${BASE_URL}${BASE_QUERY}`,
+    values.search ? `&what=${encodeURIComponent(values?.search)}` : '',
+    values.location ? `&where=${encodeURIComponent(values?.location)}` : '',
+    values.fullTime ? `&full_time=1` : ''
   ]
     .join('')
     .trim()
