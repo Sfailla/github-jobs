@@ -10,7 +10,7 @@ function Toggle({ children }) {
 
   const toggle = () => setOn(on => !on)
 
-  React.useEffect(() => setMode(on ? 'dark' : 'light'), [setMode, on])
+  React.useMemo(() => setMode(on ? 'dark' : 'light'), [on, setMode])
 
   const value = React.useMemo(() => ({ on, toggle }), [on])
 
