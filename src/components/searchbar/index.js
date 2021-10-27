@@ -3,17 +3,14 @@ import { SearchbarComponents as Search } from './components'
 import DesktopSearchbar from './desktop'
 import MobileSearchbar from './mobile'
 
-import { useWindowSize } from '../../hooks'
+import { useLayoutType } from '../../hooks'
 
-function Searchbar({ handleSubmit, handleChange }) {
-  const [checked, setChecked] = React.useState(false)
-  const { width } = useWindowSize()
-
-  const handleCheck = () => setChecked(checked => !checked)
+function Searchbar({ handleSubmit, handleChange, handleCheck, checked }) {
+  const { layout } = useLayoutType()
 
   return (
     <Search onSubmit={handleSubmit}>
-      {width > 768 ? (
+      {layout === 'desktop' ? (
         <DesktopSearchbar {...{ handleCheck, handleChange, checked }} />
       ) : (
         <MobileSearchbar {...{ handleChange }} />

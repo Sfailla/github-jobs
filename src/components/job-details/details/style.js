@@ -20,11 +20,12 @@ export const Container = styled.div`
 
 export const DetailsHeader = styled.div`
   width: 100%;
-  height: 8rem;
+  height: auto;
+  min-height: 8rem;
   max-width: 64rem;
   margin-bottom: 4rem;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr min-content;
 `
 
 export const DetailsContent = styled.div`
@@ -47,6 +48,7 @@ export const Title = styled.h1`
   font-size: 2.8rem;
   color: ${({ theme }) => theme.text.normal};
   padding: 1.5rem 0 0.5rem 0;
+  line-height: 1.2;
 `
 
 export const Subtitle = styled.h4`

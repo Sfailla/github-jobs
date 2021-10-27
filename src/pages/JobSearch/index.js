@@ -7,19 +7,26 @@ import { LayoutWrapper } from '../../styles/shared'
 import Searchbar from '../../components/searchbar'
 import validate from './validateJobSearch'
 
-const INITIAL_DATA = { search: 'javascript developer', location: 'us' }
-
 function JobSearch({ jobData, setUpdateQuery, isLoading }) {
+  const [checked, setChecked] = React.useState(false)
+  const INITIAL_DATA = { search: 'javascript developer', location: '' }
+
   const { values, handleChange, handleSubmit } = useFormValidation(
     INITIAL_DATA,
     validate,
     submitRequest
   )
 
+  function handleCheck() {
+    setChecked(checked => !checked)
+  }
+
   function submitRequest() {
     setUpdateQuery(prevState => ({
       ...prevState,
       search: values.search,
+      location: values.location,
+      fullTime: checked,
       page: 1
     }))
   }
@@ -27,7 +34,7 @@ function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   return (
     <Container>
       <LayoutWrapper>
-        <Searchbar {...{ handleChange, handleSubmit }} />
+        <Searchbar {...{ handleChange, handleSubmit, handleCheck, checked }} />
         {isLoading ? (
           <div style={{ paddingTop: '8rem' }}>please wait while we load your data...</div>
         ) : (
