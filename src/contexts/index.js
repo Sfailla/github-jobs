@@ -1,11 +1,12 @@
 import React from 'react'
+import { getColorSchemePreference } from '../utils/helperFns'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../styles/theme.js'
 
 export const AppContext = React.createContext()
 
 export const AppContextProvider = ({ children }) => {
-  const [mode, setMode] = React.useState('light')
+  const [mode, setMode] = React.useState(getColorSchemePreference())
 
   const values = React.useMemo(() => ({ setMode }), [setMode])
 
