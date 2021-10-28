@@ -16,8 +16,6 @@ beforeAll(() => {
     value: () => {
       return {
         matches: false,
-        innerWidth: 1024,
-        innerHeight: 768,
         addListener: () => {},
         removeListener: () => {}
       }
