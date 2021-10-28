@@ -1,3 +1,4 @@
+import 'styled-components/macro'
 import React from 'react'
 import { SearchbarComponents as Searchbar } from '../components'
 import { SearchIcon, LocationIcon } from '../../../assets/icons'
@@ -52,7 +53,7 @@ function DesktopSearchbar({ handleChange, handleCheck, checked }) {
             <Searchbar.Label htmlFor="full-time" bold>
               Full time only
             </Searchbar.Label>
-            <Button type="submit" style={{ marginLeft: '1rem' }}>
+            <Button type="submit" css={{ marginLeft: '1rem' }}>
               Search
             </Button>
           </Wrapper>
