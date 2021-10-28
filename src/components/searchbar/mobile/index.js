@@ -1,3 +1,4 @@
+import 'styled-components/macro'
 import React from 'react'
 import { useWindowSize } from '../../../hooks'
 import { SearchbarComponents as Searchbar } from '../components'
@@ -14,14 +15,14 @@ function MobileSearchbar({ handleChange }) {
     <React.Fragment>
       <Searchbar.Section>
         <Searchbar.InputGroup>
-          <Searchbar.Input name="search" onChange={handleChange} placeholder=" " />
+          <Searchbar.Input id="search" name="search" onChange={handleChange} placeholder=" " />
           <Wrapper>
-            <Searchbar.Label>
+            <Searchbar.Label htmlFor="search">
               {isSmallScreen ? 'Filter by title...' : 'Filter by title, companies, expertise...'}
             </Searchbar.Label>
             <ButtonGroup>
               <FilterIcon
-                style={{ cursor: 'pointer', marginRight: '2.4rem' }}
+                css={{ cursor: 'pointer', marginRight: '2.4rem' }}
                 width={20}
                 height={20}
                 fill="#6E8098"
