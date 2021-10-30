@@ -6,8 +6,8 @@ import { SearchbarComponents as Searchbar } from '../components'
 describe('text inputs should work correctly', () => {
   test('should change from empty string to text value after onChange event', () => {
     const handleChange = jest.fn()
-    const { getByLabelText } = render(<MobileSearchbar handleChange={handleChange} />)
-    const input = getByLabelText('Filter by title, companies, expertise...')
+    const { getByRole } = render(<MobileSearchbar handleChange={handleChange} />)
+    const input = getByRole('textbox', { name: 'Filter by title, companies, expertise...' })
 
     expect(input.value).toEqual('')
 
@@ -21,7 +21,7 @@ describe('text inputs should work correctly', () => {
 describe('submit button should work correctly in mobile searchbar component', () => {
   test('submit button should be in the document', () => {
     const { getByRole } = render(<MobileSearchbar />)
-    const button = getByRole('button')
+    const button = getByRole('button', { name: 'icon-search.svg' })
     expect(button).toBeInTheDocument()
   })
 

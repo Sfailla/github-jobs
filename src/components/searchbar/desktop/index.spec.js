@@ -32,17 +32,18 @@ describe('inputs should work correctly for desktop searchbar component', () => {
 })
 
 describe('desktop checkbox and button should work correctly', () => {
-  test('should toggle checkbox from false to true', () => {
+  test('should correctly toggle checkbox', () => {
     const handleCheck = jest.fn()
-    const { getByLabelText } = render(<DesktopSearchbar handleCheck={handleCheck} />)
-    const checkbox = getByLabelText('Full time only')
+    const { getByRole } = render(<DesktopSearchbar handleCheck={handleCheck} />)
+    const checkbox = getByRole('checkbox')
 
     expect(checkbox.checked).toBeFalsy()
+    expect(checkbox).not.toBeChecked()
 
     fireEvent.click(checkbox)
-    fireEvent.input(checkbox, { target: { checked: true } })
 
     expect(handleCheck).toHaveBeenCalledTimes(1)
+    expect(checkbox).toBeChecked()
     expect(checkbox.checked).toBeTruthy()
   })
 
