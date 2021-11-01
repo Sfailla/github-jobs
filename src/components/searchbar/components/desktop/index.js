@@ -1,10 +1,10 @@
 import 'styled-components/macro'
 import React from 'react'
-import { SearchbarComponents as Searchbar } from '../components'
-import { SearchIcon, LocationIcon } from '../../../assets/icons'
-import { Wrapper, SvgWrapper } from '../components/searchbar/style'
-import { SearchbarButton as Button } from '../../buttons'
-import { useWindowSize } from '../../../hooks'
+import { SearchbarComponents as Searchbar } from '..'
+import { SearchIcon, LocationIcon } from '../../../../assets/icons'
+import { Wrapper, SvgWrapper } from '../searchbar/style'
+import { SearchbarButton as Button } from '../../../buttons'
+import { useWindowSize } from '../../../../hooks'
 
 function DesktopSearchbar({ handleChange, handleCheck, checked }) {
   const { width } = useWindowSize()

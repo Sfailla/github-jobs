@@ -1,8 +1,6 @@
 import React from 'react'
-import { SearchbarComponents as Search } from './components'
-import DesktopSearchbar from './desktop'
-import MobileSearchbar from './mobile'
 
+import { SearchbarComponents as Search, DesktopSearchbar, MobileSearchbar } from './components'
 import { useLayoutType } from '../../hooks'
 
 function Searchbar({ handleSubmit, handleChange, handleCheck, checked }) {
