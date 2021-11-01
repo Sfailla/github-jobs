@@ -62,3 +62,12 @@ export const InfoButton = styled(ApplyButton)`
     background-color: ${({ theme }) => theme.button.hover};
   }
 `
+
+export const TransparentButton = styled(MobileSearchButton)`
+  width: 2.5rem;
+  background-color: transparent;
+  margin-right: 2.4rem;
+  &:hover {
+    background-color: transparent;
+  }
+`
