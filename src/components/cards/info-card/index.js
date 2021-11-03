@@ -23,30 +23,14 @@ function InfoCard({ data }) {
           })
         }
       >
-        <InfoCard.Logo $color={randomColor()} />
-        <InfoCard.Heading>{`${formatTime(created)} - ${data.category.label}`}</InfoCard.Heading>
-        <InfoCard.Title>{truncateWord(title)}</InfoCard.Title>
-        <InfoCard.Subtitle>{display_name}</InfoCard.Subtitle>
-        <InfoCard.Small>{data.location.display_name}</InfoCard.Small>
+        <InfoCardLogo $color={randomColor()} />
+        <Label>{`${formatTime(created)} - ${data.category.label}`}</Label>
+        <Title>{truncateWord(title)}</Title>
+        <Label>{display_name}</Label>
+        <Span>{data.location.display_name}</Span>
       </CardInfoButton>
     </StyledInfoCard>
   )
-}
-
-function InfoCardTitle({ children }) {
-  return <Title>{children}</Title>
-}
-
-function InfoCardSubtitle({ children }) {
-  return <Label>{children}</Label>
-}
-
-function InfoCardHeading({ children }) {
-  return <Label>{children}</Label>
-}
-
-function InfoCardSmall({ children }) {
-  return <Span>{children}</Span>
 }
 
 function InfoCardLogo({ ...props }) {
@@ -56,11 +40,5 @@ function InfoCardLogo({ ...props }) {
     </Logo>
   )
 }
-
-InfoCard.Title = InfoCardTitle
-InfoCard.Subtitle = InfoCardSubtitle
-InfoCard.Heading = InfoCardHeading
-InfoCard.Small = InfoCardSmall
-InfoCard.Logo = InfoCardLogo
 
 export default React.memo(InfoCard)
