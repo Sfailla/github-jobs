@@ -21,10 +21,10 @@ function MobileSearchbar({ handleChange }) {
               {isSmallScreen ? 'Filter by title...' : 'Filter by title, companies, expertise...'}
             </Searchbar.Label>
             <ButtonGroup>
-              <TransparentButton>
+              <TransparentButton type="button">
                 <FilterIcon css={{ cursor: 'pointer' }} width={20} height={20} fill="#6E8098" />
               </TransparentButton>
-              <MobileSearchButton>
+              <MobileSearchButton type="submit">
                 <SearchIcon width={24} height={24} fill="#fff" />
               </MobileSearchButton>
             </ButtonGroup>
