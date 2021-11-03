@@ -1,11 +1,11 @@
 import React from 'react'
 
+import Searchbar from '../../components/searchbar'
+import validate from './validateJobSearch'
 import { useFormValidation } from '../../hooks'
 import { Container, GridContainer } from './style'
 import { InfoCard as Card } from '../../components/cards'
 import { LayoutWrapper } from '../../styles/shared'
-import Searchbar from '../../components/searchbar'
-import validate from './validateJobSearch'
 
 function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   const [checked, setChecked] = React.useState(false)
