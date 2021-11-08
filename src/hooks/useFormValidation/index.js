@@ -19,7 +19,7 @@ function useFormValidation(initialState, validate, authenticate) {
   }, [errors, isSubmitting, values, authenticate])
 
   function handleChange(event) {
-    event.persist()
+    // event.persist()
     setValues(prevState => ({
       ...prevState,
       [event.target.name]: event.target.value
