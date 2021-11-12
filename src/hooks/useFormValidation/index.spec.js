@@ -1,9 +1,9 @@
 // import { renderHook, act } from '@testing-library/react-hooks'
-import { renderHook, act } from '../../test/test-utils'
+import { renderHook, act } from '@testing-library/react-hooks'
 import { buildSearchForm } from '../../test/helpers'
 import useFormValidation from '.'
 
-describe('useFormValidation should work correctly', () => {
+describe('useFormValidation tests', () => {
   test('should accept initial-values', async () => {
     const initialState = { search: '', location: '' }
     const { result } = renderHook(() => useFormValidation(initialState))
@@ -12,50 +12,75 @@ describe('useFormValidation should work correctly', () => {
   })
 
   test('handleChange fn should update state correctly', async () => {
-    const initialState = { search: '', location: '' }
-    const { result, waitFor } = renderHook(() => useFormValidation(initialState))
-
-    const arr = [
+    const { search, location } = buildSearchForm()
+    const { result } = renderHook(() => useFormValidation({ search: '', location: '' }))
+    // simulate the values normally coming from the input
+    const eventArray = [
       { name: 'search', value: 'Javascript' },
-      { name: 'location', value: 'NY' }
+      { name: 'location', value: 'New York' }
     ]
 
-    // const event = (name, value) => ({
-    //   event: {
-    //     persist: jest.fn(),
-    //     target: {
-    //       name,
-    //       value
-    //     }
-    //   }
-    // })
+    act(() => {
+      eventArray.forEach(({ name, value }) => {
+        const event = {
+          persist: jest.fn(),
+          target: { name, value }
+        }
+        // simulate event object and pass input values to onChange handler
+        result.current.handleChange(event)
+      })
+    })
 
-    // // console.log('results -> ', event('search', 'javascript'))
+    expect(result.current.values).toEqual({
+      search,
+      location
+    })
+  })
 
-    // act(() => {
-    //   arr.forEach(({ name, value }) => {
-    //     event.target.name = name
-    //     event.target.value = value
+  test('should update isSubmitting state when form is submitted without errors', () => {
+    const initialState = buildSearchForm()
+    const authenticate = jest.fn()
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useFormValidation(initialState, () => ({}), authenticate)
+    )
 
-    //     result.current.handleChange()
-    //   })
-    // })
+    const event = { preventDefault: jest.fn() }
 
-    const event = {
-      target: {
-        name: 'search',
-        value: 'Javascript'
+    expect(result.current.isSubmitting).toBeFalsy()
+
+    act(() => result.current.handleSubmit(event))
+
+    waitForNextUpdate(() => {
+      expect(result.current.isSubmitting).toBeTruthy()
+    })
+
+    expect(authenticate).toHaveBeenCalledTimes(1)
+    expect(result.current.isSubmitting).toBeFalsy()
+  })
+
+  test('should show error if submitted without form values', () => {
+    function testValidation(values) {
+      let error = {}
+      if (!values.search) {
+        error.search = 'search field cannot be empty'
       }
+      return error
     }
 
-    act(() => {
-      result.current.handleChange(event)
-    })
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useFormValidation({ search: '' }, testValidation)
+    )
+    const event = { preventDefault: jest.fn() }
 
-    await waitFor(() => {
-      console.log(result.current.values)
+    expect(result.current.errors).toEqual({})
+    expect(result.current.isSubmitting).toBeFalsy()
 
-      expect(result.current.values.search).toEqual('Javascript')
+    act(() => result.current.handleSubmit(event))
+    waitForNextUpdate(() => expect(result.current.isSubmitting).toBeTruthy())
+
+    expect(result.current.errors).toEqual({
+      search: 'search field cannot be empty'
     })
+    waitForNextUpdate(() => expect(result.current.isSubmitting).toBeTruthy())
   })
 })

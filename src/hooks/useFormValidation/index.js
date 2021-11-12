@@ -12,14 +12,14 @@ function useFormValidation(initialState, validate, authenticate) {
         authenticate()
         setSubmitted(false)
       } else {
-        console.log('authentication error')
+        // console.log('authentication error / validation failed')
         setSubmitted(false)
       }
     }
   }, [errors, isSubmitting, values, authenticate])
 
   function handleChange(event) {
-    // event.persist()
+    event.persist()
     setValues(prevState => ({
       ...prevState,
       [event.target.name]: event.target.value
