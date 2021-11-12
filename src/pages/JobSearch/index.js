@@ -9,10 +9,10 @@ import { LayoutWrapper } from '../../styles/shared'
 
 function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   const [checked, setChecked] = React.useState(false)
-  const INITIAL_DATA = { search: 'javascript developer', location: '' }
+  const initialData = { search: 'javascript developer', location: '' }
 
   const { values, handleChange, handleSubmit } = useFormValidation(
-    INITIAL_DATA,
+    initialData,
     validate,
     submitRequest
   )
