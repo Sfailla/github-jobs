@@ -33,7 +33,7 @@ describe('useFetchData hook', () => {
     })
   })
 
-  test('should use cached url instead of making same api call', async () => {
+  test('should use cached results if api call is made with same url', async () => {
     jest.spyOn(global, 'fetch').mockImplementation(
       async () =>
         await Promise.resolve({
@@ -47,6 +47,7 @@ describe('useFetchData hook', () => {
 
     expect(result.current.isLoading).toBe(true)
     expect(global.fetch).toHaveBeenCalledWith(fetchUrl)
+    // first call will not be cached
     expect(global.fetch).toHaveBeenCalledTimes(1)
 
     await waitFor(() => {
@@ -56,8 +57,36 @@ describe('useFetchData hook', () => {
         error: {}
       })
     })
-    // expect(global.fetch).not.toHaveBeenCalledWith(fetchUrl)
-    // expect(global.fetch).not.toHaveBeenCalled()
+
+    rerender(fetchUrl)
+
+    expect(result.current.isLoading).toBe(false)
+    expect(global.fetch).toHaveBeenCalledWith(fetchUrl)
+    // same url will be cached so no api call will be made
+    expect(global.fetch).toHaveBeenCalledTimes(1)
+
+    await waitFor(() => {
+      expect(result.current).toStrictEqual({
+        results: stubbedJobs,
+        isLoading: false,
+        error: {}
+      })
+    })
+
+    rerender('https://api-call.com/new')
+
+    expect(result.current.isLoading).toBe(true)
+    // url is different so api call will be made
+    expect(global.fetch).toHaveBeenCalledWith('https://api-call.com/new')
+    expect(global.fetch).toHaveBeenCalledTimes(2)
+
+    await waitFor(() => {
+      expect(result.current).toStrictEqual({
+        results: stubbedJobs,
+        isLoading: false,
+        error: {}
+      })
+    })
   })
 
   test('should respond with error when promise is rejected', async () => {

@@ -11,6 +11,7 @@ const useFetchData = url => {
     if (cache.current[url]) {
       setIsLoading(false)
       setResults(cache.current[url])
+      return
     } else {
       try {
         const response = await fetch(url)
