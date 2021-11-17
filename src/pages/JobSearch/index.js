@@ -3,9 +3,11 @@ import React from 'react'
 import Searchbar from '../../components/searchbar'
 import validate from './validateJobSearch'
 import { useFormValidation } from '../../hooks'
-import { Container, GridContainer } from './style'
+import { Container, GridContainer, Backdrop, Loading, Message } from './style'
 import { InfoCard as Card } from '../../components/cards'
 import { LayoutWrapper } from '../../styles/shared'
+import SearchbarModal from '../../components/searchbar/components/modal/searchModal'
+import useModal from '../../components/searchbar/components/modal/useModal'
 
 function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   const [checked, setChecked] = React.useState(false)
@@ -16,6 +18,8 @@ function JobSearch({ jobData, setUpdateQuery, isLoading }) {
     validate,
     submitRequest
   )
+
+  const { open, handleOpenModal, handleCloseModal } = useModal()
 
   function handleCheck() {
     setChecked(checked => !checked)
@@ -32,23 +36,23 @@ function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   }
 
   return (
-    <Container>
+    <Container $open={open}>
       <LayoutWrapper>
-        <Searchbar {...{ handleChange, handleSubmit, handleCheck, checked }} />
+        <Searchbar {...{ handleChange, handleSubmit, handleCheck, checked, handleOpenModal }} />
         {isLoading ? (
-          <div style={{ paddingTop: '8rem' }}>please wait while we load your data...</div>
+          <Loading>please wait while we load your data...</Loading>
         ) : (
           <GridContainer>
             {jobData?.results?.length > 0 ? (
               jobData.results.map(data => <Card key={data.id} data={data} />)
             ) : (
-              <div style={{ paddingTop: '8rem' }}>
-                Sorry no results were found 😕. Please try searching another job!
-              </div>
+              <Message>Sorry no results were found 😕. Please try searching another job!</Message>
             )}
           </GridContainer>
         )}
       </LayoutWrapper>
+      {open && <Backdrop onClick={handleCloseModal} />}
+      <SearchbarModal open={open} />
     </Container>
   )
 }
