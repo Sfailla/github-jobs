@@ -22,11 +22,10 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; 
     transition: background .5s linear;
-    position: relative;
   }
 
   html, body { width: 100%; height: 100%; };
   
-  body > div { width: 100%; height: 100%; position: relative }
+  body > div { width: 100%; height: 100%; }
 
 `
