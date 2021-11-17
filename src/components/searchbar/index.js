@@ -3,7 +3,7 @@ import React from 'react'
 import { SearchbarComponents as Search, DesktopSearchbar, MobileSearchbar } from './components'
 import { useLayoutType } from '../../hooks'
 
-function Searchbar({ handleSubmit, handleChange, handleCheck, checked }) {
+function Searchbar({ handleSubmit, handleChange, handleCheck, checked, handleOpenModal }) {
   const { layout } = useLayoutType()
 
   return (
@@ -11,7 +11,7 @@ function Searchbar({ handleSubmit, handleChange, handleCheck, checked }) {
       {layout === 'desktop' ? (
         <DesktopSearchbar {...{ handleCheck, handleChange, checked }} />
       ) : (
-        <MobileSearchbar {...{ handleChange }} />
+        <MobileSearchbar {...{ handleChange, handleOpenModal }} />
       )}
     </Search>
   )

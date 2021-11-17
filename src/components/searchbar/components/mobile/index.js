@@ -7,7 +7,7 @@ import { MobileSearchButton, TransparentButton } from '../../../buttons'
 import { Wrapper } from '../searchbar/style'
 import { ButtonGroup } from './style'
 
-function MobileSearchbar({ handleChange }) {
+function MobileSearchbar({ handleChange, handleOpenModal }) {
   const { width } = useWindowSize()
   const isSmallScreen = width < 500
 
@@ -21,7 +21,7 @@ function MobileSearchbar({ handleChange }) {
               {isSmallScreen ? 'Filter by title...' : 'Filter by title, companies, expertise...'}
             </Searchbar.Label>
             <ButtonGroup>
-              <TransparentButton type="button">
+              <TransparentButton onClick={handleOpenModal} type="button">
                 <FilterIcon css={{ cursor: 'pointer' }} width={20} height={20} fill="#6E8098" />
               </TransparentButton>
               <MobileSearchButton type="submit">

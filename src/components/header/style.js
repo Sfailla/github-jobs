@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { headerHeight } from '../../styles/shared'
+import { headerHeight, media } from '../../styles/shared'
 import { flex } from '../../styles/mixins'
 
 export const Background = styled.header`
@@ -11,6 +11,10 @@ export const Background = styled.header`
   background-size: cover;
   padding: 0 4rem;
   background-color: ${({ theme }) => theme.background.primary};
+
+  ${media.sm`
+    padding: 0 2rem;
+  `}
 `
 
 export const HeaderContent = styled.div`
