@@ -1,22 +1,35 @@
 import React from 'react'
 
-function useFormValidation(initialState, validate, authenticate) {
+function useFormValidation(initialState, validate, authenticate, { ...options } = {}) {
   const [values, setValues] = React.useState(initialState)
   const [errors, setErrors] = React.useState({})
   const [isSubmitting, setSubmitted] = React.useState(false)
+  const { resetOnSubmit } = options
 
-  React.useEffect(() => {
-    if (isSubmitting) {
+  const handleFormSubmit = React.useCallback(async () => {
+    try {
       const noErrors = Object.keys(errors).length === 0
       if (noErrors) {
         authenticate()
         setSubmitted(false)
-      } else {
-        // console.log('authentication error / validation failed')
-        setSubmitted(false)
+
+        if (resetOnSubmit) {
+          setValues(initialState)
+        }
       }
+    } catch (error) {
+      console.log(error)
+      throw new Error('error in useFormValidation hook submission', error)
+    } finally {
+      setSubmitted(false)
     }
-  }, [errors, isSubmitting, values, authenticate])
+  }, [authenticate, errors, initialState, resetOnSubmit])
+
+  React.useEffect(() => {
+    if (isSubmitting) {
+      handleFormSubmit()
+    }
+  }, [errors, isSubmitting, values, authenticate, handleFormSubmit])
 
   function handleChange(event) {
     event.persist()
