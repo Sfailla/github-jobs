@@ -23,7 +23,7 @@ function SearchLabel({ bold = false, children, ...props }) {
 }
 
 function SearchInput({ ...props }) {
-  return <Input {...props} />
+  return <Input autoComplete="off" {...props} />
 }
 
 function SearchCheckbox({ ...props }) {

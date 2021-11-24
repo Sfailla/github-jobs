@@ -6,7 +6,7 @@ import { Wrapper, SvgWrapper } from '../searchbar/style'
 import { SearchbarButton as Button } from '../../../buttons'
 import { useWindowSize } from '../../../../hooks'
 
-function DesktopSearchbar({ handleChange, handleCheck, checked }) {
+function DesktopSearchbar({ values, handleChange, handleCheck, checked }) {
   const { width } = useWindowSize()
   const isSmallScreen = width < 992
 
@@ -14,7 +14,13 @@ function DesktopSearchbar({ handleChange, handleCheck, checked }) {
     <React.Fragment>
       <Searchbar.Section>
         <Searchbar.InputGroup>
-          <Searchbar.Input id="job-search" name="search" onChange={handleChange} placeholder=" " />
+          <Searchbar.Input
+            id="job-search"
+            name="search"
+            value={values.search}
+            onChange={handleChange}
+            placeholder=" "
+          />
           <Wrapper>
             <SearchIcon width={24} height={24} fill="#5964E0" />
             <Searchbar.Label htmlFor="job-search">
@@ -29,8 +35,9 @@ function DesktopSearchbar({ handleChange, handleCheck, checked }) {
           <Searchbar.Input
             id="location-search"
             name="location"
-            onChange={handleChange}
             placeholder=" "
+            value={values.location}
+            onChange={handleChange}
           />
           <Wrapper>
             <SvgWrapper>
@@ -63,4 +70,4 @@ function DesktopSearchbar({ handleChange, handleCheck, checked }) {
   )
 }
 
-export default React.memo(DesktopSearchbar)
+export default DesktopSearchbar
