@@ -20,7 +20,7 @@ export const Backdrop = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
 `
 
 export const Loading = styled.div`
@@ -46,6 +46,8 @@ export const GridContainer = styled.div`
   `};
 
   ${media.md`
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
+    overflow: ${({ $open }) => ($open ? 'hidden' : 'visible')};
+    height: ${({ $open }) => ($open ? 'calc(100vh - 160px)' : 'auto')};
   `}
 `

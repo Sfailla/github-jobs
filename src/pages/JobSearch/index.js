@@ -2,30 +2,37 @@ import React from 'react'
 
 import Searchbar from '../../components/searchbar'
 import validate from './validateJobSearch'
-import { useFormValidation } from '../../hooks'
+import { useFormValidation, useWindowSize } from '../../hooks'
 import { Container, GridContainer, Backdrop, Loading, Message } from './style'
 import { InfoCard as Card } from '../../components/cards'
 import { LayoutWrapper } from '../../styles/shared'
-import SearchbarModal from '../../components/searchbar/components/modal/searchModal'
+import SearchbarModal from '../../components/searchbar/components/modal'
 import useModal from '../../components/searchbar/components/modal/useModal'
 
 function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   const [checked, setChecked] = React.useState(false)
-  const initialData = { search: 'javascript developer', location: '' }
+  const initialData = { search: '', location: '' }
 
   const { values, handleChange, handleSubmit } = useFormValidation(
     initialData,
     validate,
-    submitRequest
+    submitRequest,
+    { resetOnSubmit: true }
   )
 
   const { open, handleOpenModal, handleCloseModal } = useModal()
+  const { width } = useWindowSize()
+
+  React.useEffect(() => {
+    if (width > 768) handleCloseModal()
+  }, [width, handleCloseModal])
 
   function handleCheck() {
     setChecked(checked => !checked)
   }
 
   function submitRequest() {
+    if (open) handleCloseModal()
     setUpdateQuery(prevState => ({
       ...prevState,
       search: values.search,
@@ -38,11 +45,13 @@ function JobSearch({ jobData, setUpdateQuery, isLoading }) {
   return (
     <Container $open={open}>
       <LayoutWrapper>
-        <Searchbar {...{ handleChange, handleSubmit, handleCheck, checked, handleOpenModal }} />
+        <Searchbar
+          {...{ values, handleChange, handleSubmit, handleCheck, checked, handleOpenModal }}
+        />
         {isLoading ? (
           <Loading>please wait while we load your data...</Loading>
         ) : (
-          <GridContainer>
+          <GridContainer $open={open}>
             {jobData?.results?.length > 0 ? (
               jobData.results.map(data => <Card key={data.id} data={data} />)
             ) : (
@@ -52,7 +61,7 @@ function JobSearch({ jobData, setUpdateQuery, isLoading }) {
         )}
       </LayoutWrapper>
       {open && <Backdrop onClick={handleCloseModal} />}
-      <SearchbarModal open={open} />
+      <SearchbarModal {...{ open, values, handleChange, handleSubmit, handleCheck, checked }} />
     </Container>
   )
 }
