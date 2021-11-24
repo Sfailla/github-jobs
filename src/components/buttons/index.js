@@ -2,7 +2,7 @@ export {
   StyledButton,
   SearchbarButton,
   CardInfoButton,
-  MobileSearchButton,
+  SearchIconButton,
   TransparentButton,
   ApplyButton,
   InfoButton

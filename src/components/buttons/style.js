@@ -27,7 +27,6 @@ export const StyledButton = styled.button`
 
 export const SearchbarButton = styled(StyledButton)`
   min-width: 14.1rem;
-  margin-left: 2.7rem;
 
   ${media.lg`min-width: 8rem;`}
 `
@@ -44,7 +43,7 @@ export const CardInfoButton = styled.button`
   ${flex('space-between', 'flex-start', 'column')};
 `
 
-export const MobileSearchButton = styled(StyledButton)`
+export const SearchIconButton = styled(StyledButton)`
   width: 4.8rem;
   ${flex()}
 `
@@ -63,7 +62,7 @@ export const InfoButton = styled(ApplyButton)`
   }
 `
 
-export const TransparentButton = styled(MobileSearchButton)`
+export const TransparentButton = styled(SearchIconButton)`
   width: 2.5rem;
   background-color: transparent;
   margin-right: 2.4rem;
