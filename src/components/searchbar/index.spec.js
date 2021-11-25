@@ -3,9 +3,16 @@ import userEvent from '@testing-library/user-event'
 import Searchbar from '.'
 
 describe('test for searchbar container component', () => {
+  const values = {
+    search: 'Javascript',
+    location: 'NY'
+  }
   test('submit button should trigger onSubmit handler', () => {
     const handleSubmit = jest.fn(event => event.preventDefault())
-    const { getByRole } = render(<Searchbar handleSubmit={handleSubmit} />)
+    const handleChange = jest.fn()
+    const { getByRole } = render(
+      <Searchbar values={values} handleChange={handleChange} handleSubmit={handleSubmit} />
+    )
     const button = getByRole('button', { name: /search/i })
     userEvent.click(button)
 
@@ -14,7 +21,8 @@ describe('test for searchbar container component', () => {
   })
 
   test('should render correct components based on window width', () => {
-    const { getByLabelText } = render(<Searchbar />)
+    const handleChange = jest.fn()
+    const { getByLabelText } = render(<Searchbar values={values} handleChange={handleChange} />)
     const locationInput = getByLabelText(/filter by location/i)
 
     expect(locationInput).toBeInTheDocument()

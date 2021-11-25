@@ -30,7 +30,7 @@ function MobileSearchbar({ values, handleChange, handleOpenModal }) {
               <TransparentButton onClick={handleOpenModal} type="button">
                 <FilterIcon css={{ cursor: 'pointer' }} width={20} height={20} fill="#6E8098" />
               </TransparentButton>
-              <SearchIconButton type="submit">
+              <SearchIconButton type="submit" disabled>
                 <SearchIcon width={24} height={24} fill="#fff" />
               </SearchIconButton>
             </ButtonGroup>
