@@ -1,12 +1,12 @@
 import React from 'react'
-import { AppContext } from '../../contexts'
+import { useAppContext } from '../../contexts'
 import { Container, Switch, Slider, Label } from './style'
 
 export const ToggleContext = React.createContext()
 
 function Toggle({ children }) {
   const [on, setOn] = React.useState(false)
-  const { setMode } = React.useContext(AppContext)
+  const { setMode } = useAppContext()
 
   const toggle = () => setOn(on => !on)
 
