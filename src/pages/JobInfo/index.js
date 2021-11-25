@@ -7,8 +7,6 @@ import { Container, ReverseMarginLayout } from './style'
 function JobInfo(props) {
   const jobDetails = props.location.state
 
-  console.log(jobDetails)
-
   return (
     <Container>
       <LayoutWrapper>
