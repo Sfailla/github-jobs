@@ -1,10 +1,15 @@
 import styled from 'styled-components/macro'
 import { flex } from '../../../styles/mixins'
-import { DesignSystem } from '../../../styles/shared'
+import { DesignSystem, media } from '../../../styles/shared'
 
 const { color } = DesignSystem
 
-export const Divider = styled.div``
+export const Divider = styled.div`
+  ${media.sm`
+  ${flex('flex-start', 'flex-start', 'column')};
+  margin-bottom: 3.1rem;
+ `}
+`
 
 export const Container = styled.div`
   width: 100%;
@@ -26,6 +31,11 @@ export const DetailsHeader = styled.div`
   margin-bottom: 4rem;
   display: grid;
   grid-template-columns: 1fr min-content;
+
+  ${media.sm`
+    grid-template-columns: 1fr;
+    margin-bottom: 3.2rem;
+  `}
 `
 
 export const DetailsContent = styled.div`
