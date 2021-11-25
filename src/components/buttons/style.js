@@ -48,11 +48,16 @@ export const SearchIconButton = styled(StyledButton)`
   ${flex()}
 `
 export const ApplyButton = styled(StyledButton)`
-  width: 14.1rem;
+  min-width: 14.1rem;
   height: 4.8rem;
+
+  ${media.sm`
+    width: 100%;
+  `}
 `
 
 export const InfoButton = styled(ApplyButton)`
+  width: 14.1rem;
   letter-spacing: 0;
   background-color: ${({ theme }) => theme.button.normal};
   color: ${({ theme }) => theme.button.text};
