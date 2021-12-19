@@ -37,6 +37,14 @@ export const DesignSystem = {
     small: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
   },
   typography: {
+    heading() {
+      return css`
+        font-family: 'Arimo', sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      `
+    },
     h1: '28px',
     h2: '24px',
     h3: '20px',
